@@ -4,7 +4,6 @@ build
 *.class
 .mtj.tmp/
 # Package Files #
-*.jar
 *.war
 *.ear
 out
