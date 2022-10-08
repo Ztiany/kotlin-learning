@@ -57,14 +57,14 @@ fun main3() = runBlocking<Unit> {
 @ExperimentalCoroutinesApi
 fun main() = runBlocking<Unit> {
     val broadcast = ConflatedBroadcastChannel<String>()
-    broadcast.offer("one")
-    broadcast.offer("two")
+    broadcast.trySend("one").isSuccess
+    broadcast.trySend("two").isSuccess
     // now launch a coroutine to print the most recent update
     launch { // use the context of the me.ztiany.tools.main thread for a coroutine
         broadcast.consumeEach { println(it) }
     }
-    broadcast.offer("three")
-    broadcast.offer("four")
+    broadcast.trySend("three").isSuccess
+    broadcast.trySend("four").isSuccess
     yield() // yield the me.ztiany.tools.main thread to the launched coroutine
     broadcast.close() // now close broadcast channel to cancel consumer, too
 }

@@ -81,7 +81,7 @@ private class LogContinuationInterceptor : ContinuationInterceptor {
 
     override fun <T> interceptContinuation(continuation: Continuation<T>) = LogContinuation(continuation)
 
-    private class LogContinuation<T>(private val original: Continuation<T>) : Continuation<T> {
+    class LogContinuation<T>(private val original: Continuation<T>) : Continuation<T> {
 
         override val context = original.context
 
