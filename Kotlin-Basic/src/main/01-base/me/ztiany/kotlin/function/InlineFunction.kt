@@ -25,21 +25,20 @@ import javax.swing.tree.TreeNode
  *  3. JVM 天然支持了针对该方式的 Lambda 表达式的翻译和优化，这也意味着开发者在书写 Lambda 表达式的同时，可以完全不用关心这个问题，这极大地提升了开发的体验。
  *
  *
- * **为什么 Kotlin 不适用 invokedynamic**？invokedynamic固然不错，但 Kotlin 不支持它的理由似乎也很充分。我们有足够的理由相信，其最大的原因是 Kotlin 在一开始就需要兼容
+ * **为什么 Kotlin 不适用 invokedynamic**？invokedynamic 固然不错，但 Kotlin 不支持它的理由似乎也很充分。我们有足够的理由相信，其最大的原因是 Kotlin 在一开始就需要兼容
  * Android 最主流的 Java 版本 SE 6，这导致它无法通过 invokedynamic 来解决 Android 平台的 Lambda 开销问题。我们也可以通过阅读 Kotlin 团队核心成员在其官方论坛上的发言，
- * 来证实这一猜想。发言网址如下：https://discuss.kotlinlang.org/t/aop-invokedynamic-interceptable/660，因此，作为另一种主流的解决方案，Kotlin 拥抱了内联函数，在C++、C#
+ * 来证实这一猜想。发言网址如下：https://discuss.kotlinlang.org/t/aop-invokedynamic-interceptable/660，因此，作为另一种主流的解决方案，Kotlin 拥抱了内联函数，在 C++、C#
  * 等语言中也支持这种特性。简单来说，我们可以用 inline 关键字来修饰函数，这些函数就成为了内联函数。它们的函数体在编译期被嵌入每一个被调用的地方，以减少额外生成的匿名类数，
  * 以及函数执行的时间开销。所以如果你想在用 Kotlin 开发时获得尽可能良好的性能支持，以及控制匿名类的生成数量，就有必要来学习下内联函数的相关语法。
  *
  * **内联函数特点**：
  *
  * 1. inline 修饰符影响函数本身和传给它的 lambda 表达式：所有这些都将内联到调用处。
- * 2. 内联可能导致生成的代码增加，但是如果我们使用得当（不内联大函数），它将在性能上有所提升，
- *         尤其是在循环中的“超多态（megamorphic）”调用处。
+ * 2. 内联可能导致生成的代码增加，但是如果我们使用得当（不内联大函数），它将在性能上有所提升，尤其是在循环中的“超多态（megamorphic）”调用处。
  *
  * 参考资料：
  *
- *  - [Kotlin 源码里成吨的 noinline 和 crossinline 是干嘛的？看完这个视频你转头也写了一吨](https://juejin.cn/post/6869954460634841101)。
+ *  - [Kotlin 源码里成吨的 noinline 和 crossinline 是干嘛的？看完这个视频你转头也写了一吨](https://juejin.cn/post/6869954460634841101) 。
  */
 fun main() {
 
@@ -66,7 +65,7 @@ private fun <T> noinlineLock(lock: Lock, body: () -> T): T {
 }
 
 /**
- * **内联函数不是完能的**：以下情况我们应避免使用内联函数：
+ * **内联函数不是万能的**：以下情况我们应避免使用内联函数：
  *
  * 1. 由于 JVM 对普通的函数已经能够根据实际情况智能地判断是否进行内联优化，所以我们并不需要对其实使用 Kotlin 的 inline 语法，那只会让字节码变得更加复杂；
  * 2. 尽量避免对具有大量函数体的函数进行内联，这样会导致过多的字节码数量；
@@ -107,6 +106,12 @@ private fun inlineReturn1() {
     //内联函数可以直接从函数返回，因为运行时它将会被内联到该函数体内
     lock(ReentrantLock()) {
         return
+    }
+
+    crossinlineSample {
+        val a = 3
+        // 禁止 return
+        //return
     }
 }
 

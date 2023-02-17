@@ -1,6 +1,6 @@
 package me.ztiany.kotlin.collections
 
-/**区间的使用*/
+/** 区间的使用 */
 fun main() {
     useRange()
     rangeFunction()
@@ -8,11 +8,12 @@ fun main() {
 
 /**
  * 区间：区间表达式由具有操作符形式 .. 的 rangeTo 函数辅以 in 和 !in 形成。
+ *
  *      1，区间是为任何可比较类型定义的，但对于整型原生类型，它有一个优化的实现。
  *      2，整型区间（IntRange、 LongRange、 CharRange）有一个额外的特性：它们可以迭代。 编译器负责将其转换为类似 Java 的基于索引的 for-循环而无额外开销。
- *      3，如果需要倒序迭代数字也很简单。可以使用标准库中定义的 downTo() 函数
- *      4，以不等于 1 的任意步长迭代数字？ 当然没问题， step() 函数有助于此
- *      5，要创建一个不包括其结束元素的区间，可以使用 until 函数
+ *      3，如果需要倒序迭代数字也很简单。可以使用标准库中定义的 downTo() 函数。
+ *      4，以不等于 1 的任意步长迭代数字？ 当然没问题， step() 函数有助于此。
+ *      5，要创建一个不包括其结束元素的区间，可以使用 until 函数。
  */
 private fun useRange() {
     //使用区间
@@ -32,7 +33,7 @@ private fun useRange() {
     println()
 }
 
-/** 区间如何工作：区间实现了该库中的一个公共接口：ClosedRange<T>。*/
+/** 区间如何工作：区间实现了该库中的一个公共接口：ClosedRange<T>。 */
 private fun rangeFunction() {
 
     //rangeTo()：整型类型的 rangeTo() 操作符只是调用 *Range 类的构造函数

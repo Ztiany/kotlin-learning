@@ -2,7 +2,7 @@ package me.ztiany.kotlin.function
 
 
 /**
- *尾递归函数
+ * 尾递归函数
  */
 fun main(args: Array<String>) {
     val point = findFixPoint(1.0)

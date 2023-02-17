@@ -1,4 +1,4 @@
-package me.ztiany.kotlin.advanced
+package me.ztiany.kotlin.collections
 
 
 
@@ -9,6 +9,9 @@ package me.ztiany.kotlin.advanced
  *      2，Kotlin 没有专门的语法结构创建 list 或 set。 要用标准库的方法，如 listOf()、 mutableListOf()、 setOf()、 mutableSetOf()
  *      3，在非性能关键代码中创建 map 可以用一个简单的惯用法来完成：mapOf(a to b, c to d)
  */
+fun main(args: Array<String>) {
+    useCollections()
+}
 
 private open class Shape
 
@@ -84,8 +87,4 @@ Kotlin为操作集合容器添加了许多的函数式API，操作即可变得�
  */
 private fun functionalApi() {
 
-}
-
-fun main(args: Array<String>) {
-    useCollections()
 }

@@ -4,10 +4,6 @@ import java.util.*
 
 /**
  *使用集合
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 17.5.23 23:11
  */
 fun main() {
     //使用 in 运算符来判断集合内是否包含某实例：
@@ -22,7 +18,7 @@ fun main() {
 
     /*Stream 操作*/
     fruits.filter { it.startsWith("a") }
-            .sortedBy { it }
-            .map { it.uppercase(Locale.getDefault()) }
-            .forEach { println(it) }
+        .sortedBy { it }
+        .map { it.uppercase(Locale.getDefault()) }
+        .forEach { println(it) }
 }
