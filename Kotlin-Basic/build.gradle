@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlin_version = '1.7.10'
+        kotlin_version = '1.8.10'
     }
 }
 
@@ -72,10 +72,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     testImplementation "org.jetbrains.kotlin:kotlin-test"
 
+    //================================================================================
+    //Kotlin
+    //================================================================================
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${rootProject.kotlin_version}"
-    implementation "org.jetbrains.kotlin:kotlin-reflect"
     implementation "org.jetbrains.kotlin:kotlin-script-runtime:${rootProject.kotlin_version}"
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
     //kotlin coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutines_version}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:${coroutines_version}"
@@ -88,15 +91,37 @@ dependencies {
     //https://github.com/Kotlin/kotlinx.atomicfu
     implementation 'org.jetbrains.kotlinx:atomicfu:0.17.0'
 
+    //================================================================================
+    //RxJava
+    //================================================================================
     //https://github.com/ReactiveX/RxKotlin
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
 
+    //================================================================================
+    //retrofit with coroutine
+    //================================================================================
     //https://github.com/square/moshi
     implementation 'com.squareup.moshi:moshi:1.14.0'
     implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
     //kapt("com.squareup.moshi:moshi-kotlin-codegen:1.8.0")
 
+    //retrofit with coroutine
+    implementation "com.squareup.retrofit2:retrofit:${retrofit_version}"
+    implementation "com.squareup.retrofit2:retrofit-mock:${retrofit_version}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofit_version}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    //okhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:mockwebserver:4.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
+
+    //================================================================================
+    //bennyhuo
+    //================================================================================
     //https://github.com/enbandari/PortableAndroidHandler
     implementation "com.bennyhuo:portable-android-handler:1.0"
     //https://github.com/enbandari/KotlinTuples
@@ -110,18 +135,9 @@ dependencies {
     //implementation "com.bennyhuo.kotlin:deepcopy-annotations:1.1.0"
     //kpt "com.bennyhuo.kotlin:deepcopy-compiler:1.1.0"
 
-    //retrofit with coroutine
-    implementation "com.squareup.retrofit2:retrofit:${retrofit_version}"
-    implementation "com.squareup.retrofit2:retrofit-mock:${retrofit_version}"
-    implementation "com.squareup.retrofit2:converter-gson:${retrofit_version}"
-    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-
-    //okhttp
-    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
-    implementation 'com.squareup.okhttp3:mockwebserver:4.10.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
-
+    //================================================================================
+    //arrow
+    //================================================================================
     //arrow
     implementation "io.arrow-kt:arrow-core:${arrow_version}"
     //implementation "io.arrow-kt:arrow-syntax:${arrow_version}"

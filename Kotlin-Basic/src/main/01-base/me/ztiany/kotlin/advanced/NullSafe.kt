@@ -25,6 +25,8 @@ package me.ztiany.kotlin.advanced
  *
  * 注意：由于 null 只能被存储在 Java 的引用类型的变量中，所以在 Kotlin 中基本数据的可空版本都会使用该类型的包装形式。
  * 同样，如果你用基本数据类型作为泛型类的类型参数，Kotlin 同样会使用该类型的包装形式。
+ *
+ * ——《Kotlin 核心编程》第四章
  */
 fun main() {
     //在 Kotlin 中，类型系统区分一个引用可以容纳 null （可空引用）还是不能容纳（非空引用）。

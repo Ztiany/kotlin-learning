@@ -1,4 +1,4 @@
-package me.ztiany.noarg
+package me.ztiany.kotlin.tool.noarg
 
 import com.google.gson.Gson
 import java.util.*
