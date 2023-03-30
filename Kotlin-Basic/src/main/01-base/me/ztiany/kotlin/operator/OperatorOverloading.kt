@@ -3,14 +3,6 @@ package me.ztiany.kotlin.operator
 import java.math.BigDecimal
 
 /**
- *操作符重载
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 17.6.7 23:08
- */
-
-/**
  * 操作符符重载：Kotlin 允许我们为自己的类型提供预定义的一组操作符的实现。
  * 这些操作符具有固定的符号表示 （如 + 或 *）和固定的优先级。为实现这样的操作符，
  * 我们为相应的类型（即二元操作符左侧的类型和一元操作符的参数类型）提供了一个固定名字的成员函数或扩展函数。
@@ -27,7 +19,7 @@ import java.math.BigDecimal
  *   比较操作符
  *   命名函数的中缀调用
  *
- *   函数名与对应的操作符参考：https://www.kotlincn.net/docs/reference/operator-overloading.html
+ * 函数名与对应的操作符参考：https://www.kotlincn.net/docs/reference/operator-overloading.html
  */
 
 

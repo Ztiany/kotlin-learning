@@ -1,14 +1,12 @@
 package book.dukc.ch03_foundation
 
+import analyse.log
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlin.coroutines.*
 
 /**
- * 《深入理解Kotlin协程》chapter 3.1：协程的创建
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/25 10:08
+ * 《深入理解 Kotlin 协程》chapter 3.1：协程的创建
  */
 fun main() {
     /*
@@ -17,7 +15,7 @@ fun main() {
             1. fun <T> (suspend () -> T).createCoroutine(completion: Continuation<T>): Continuation<Unit>
             2. fun <R, T> (suspend R.() -> T).createCoroutine( receiver: R, completion: Continuation<T> ): Continuation<Unit>
 
-        这两组 API 的差异点仅仅在于协程体自身的类型，第二组 API 的协程体多了一个 Receiver 类型 R。这个R可以为协程体提供一个作用域，在协程体内我们可以直接使用作用域内提供的函数或者状态等。
+        这两组 API 的差异点仅仅在于协程体自身的类型，第二组 API 的协程体多了一个 Receiver 类型 R。这个 R 可以为协程体提供一个作用域，在协程体内我们可以直接使用作用域内提供的函数或者状态等。
      */
 
     //第一组 API：协程体不带 Receiver【3.1.1-3.1.2】
@@ -42,14 +40,14 @@ private fun createCoroutine() {
             返回值是一个 Continuation 对象，由于现在协程仅仅被创建出来，因此需要通过这个值在之后触发协程的启动。
      */
     val continuation = suspend {
-        println("In coroutine")
+        log("In coroutine")
         4
     }.createCoroutine(object : Continuation<Int> {
         override val context: CoroutineContext
-            get() = EmptyCoroutineContext
+            get() = EmptyCoroutineContext /*+ Dispatchers.Default*/
 
         override fun resumeWith(result: Result<Int>) {
-            println("Coroutine End: $result")
+            log("Coroutine End: $result")
         }
     })
 
@@ -60,10 +58,10 @@ private fun createCoroutine() {
             1. 通过阅读 createCoroutine 的源码或者直接打断点调试，可以得知 continuation 是 SafeContinuation 的实例，
             2. SafeContinuation 其实只是一个“马甲”。SafeContinuation 一个名为 delegate 的属性，这个属性才是 Continuation 的本体。
             3. delegate 的类名类似 <FileName>Kt$<FunctionName>$continuation$1 这样的形式，与 Java 类似，这其实指代了某一个匿名内部类。
-            4. 匿名内部类就是我们的协程体，那个用以创建协程的 suspend Lambda 表达式。
+            4. 匿名内部类就是我们的协程体，那个用以创建协程的 suspend lambda 表达式。
             4. Kotlin 编译器在编译器会对我们的 suspend Lambda 做一些处理，生成了一个匿名内部类，这个类继承自 SuspendLambda 类，而这个类又是 Continuation 接口的实现类。
-            5. Suspend Lambda 表达式是如何编译的？一个函数如何对应一个类呢？
-                    Suspend Lambda 有一个抽象函数 invokeSuspend（这个函数在它的父类 BaseContinuationImpl 中声明），编译生成的匿名内部类中这个函数的实现就是我们的协程体。
+            5. suspend lambda 表达式是如何编译的？一个函数如何对应一个类呢？
+                    SuspendLambda 有一个抽象函数 invokeSuspend（这个函数在它的父类 BaseContinuationImpl 中声明），编译生成的匿名内部类中这个函数的实现就是我们的协程体。
      */
 }
 
@@ -90,7 +88,7 @@ private fun startCoroutine() {
     1. Kotlin 没有提供直接声明带有 Receiver 的 Lambda 表达式的语法，为了方便使用带有 Receiver 的协程 API，我们封装一个用以启动协程的函数 launchCoroutine。
     2. 多了一个 Receiver 类型 R，可以为协程体提供一个作用域，在协程体内我们可以直接使用作用域内提供的函数或者状态等。
  */
-fun <R, T> launchCoroutine(receiver: R, black: suspend R.() -> T) {
+private fun <R, T> launchCoroutine(receiver: R, black: suspend R.() -> T) {
     black.startCoroutine(receiver, object : Continuation<T> {
         override val context: CoroutineContext
             get() = EmptyCoroutineContext
@@ -120,7 +118,7 @@ private class RestrictsProducerScope<T> {
     }
 }
 
-fun callLaunchCoroutine() {
+private fun callLaunchCoroutine() {
     launchCoroutine(ProducerScope<Int>()) {
         println("In coroutine.")
         produce(1024)

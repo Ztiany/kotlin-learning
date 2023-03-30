@@ -6,12 +6,7 @@ import kotlin.coroutines.Continuation
 import kotlin.coroutines.ContinuationInterceptor
 import kotlin.coroutines.CoroutineContext
 
-/**
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2019/8/25 11:28
- */
+
 suspend fun main() {
     //sample1()
     sample2()

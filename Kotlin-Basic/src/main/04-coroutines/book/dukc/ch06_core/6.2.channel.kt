@@ -7,10 +7,6 @@ import kotlinx.coroutines.channels.Channel.Factory.RENDEZVOUS
 
 /**
  * 《深入理解Kotlin协程》chapter 6.2：热数据通道 Channel
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/25 10:08
  */
 suspend fun main() {
     //Channel：Channel 实际上就是一个并发安全的队列，它可以用来连接协程，实现不同协程的通信。

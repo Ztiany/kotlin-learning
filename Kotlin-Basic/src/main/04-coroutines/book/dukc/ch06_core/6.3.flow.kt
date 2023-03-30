@@ -8,10 +8,6 @@ import java.util.concurrent.Executors
 
 /**
  * 《深入理解Kotlin协程》chapter 6.3：flow
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/25 10:08
  */
 suspend fun main() {
     //随着 RxJava 的流行，响应式编程模型逐步深入人心。Flow 就是 Kotlin 协程与响应式编程模型结合的产物。

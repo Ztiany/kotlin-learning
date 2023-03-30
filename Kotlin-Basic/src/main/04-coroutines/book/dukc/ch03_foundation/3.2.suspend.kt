@@ -8,11 +8,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 /**
- * 《深入理解Kotlin协程》chapter 3.2：协程的挂起
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/29 14:17
+ * 《深入理解 Kotlin 协程》chapter 3.2：协程的挂起
  */
 suspend fun main() {
     //Kotlin 协程的挂起和恢复能力本质上就是挂起函数的挂起和恢复。

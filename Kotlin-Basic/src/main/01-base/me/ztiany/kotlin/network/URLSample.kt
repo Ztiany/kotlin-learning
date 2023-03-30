@@ -2,11 +2,7 @@ package me.ztiany.kotlin.network
 
 import java.net.URL
 
-/**
- *
- * @author ztiany
- *          Email: ztiany3@gmail.com
- */
+
 fun main(args: Array<String>) {
     doGet()
 }

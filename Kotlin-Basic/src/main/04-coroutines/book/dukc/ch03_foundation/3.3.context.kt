@@ -3,11 +3,7 @@ package book.dukc.ch03_foundation
 import kotlin.coroutines.*
 
 /**
- * 《深入理解Kotlin协程》chapter 3.2：协程上下文
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/29 14:17
+ * 《深入理解 Kotlin 协程》chapter 3.2：协程上下文
  */
 fun main() {
     //Continuation除了可以通过恢复调用来控制执行流程的异步返回以外，还有一个重要的属性 context，即协程的上下文。

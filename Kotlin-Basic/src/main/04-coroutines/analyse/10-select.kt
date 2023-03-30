@@ -6,8 +6,6 @@ import kotlinx.coroutines.selects.select
 /**
  *
  * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/3/21 19:04
  */
 fun main() = runBlocking {
 

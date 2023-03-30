@@ -1,10 +1,7 @@
 package me.ztiany.kotlin.basic
 
 /**
- *Elvis操作符
- *
- * @author ztiany
- *          Email: ztiany3@gmail.com
+ * Elvis操作符
  */
 
 class User {

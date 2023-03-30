@@ -5,11 +5,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 
 /**
- *Launching flows in a new coroutine.
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/30 15:39
+ * Launching flows in a new coroutine.
  */
 fun main() = runBlocking {
     //executeFlow()

@@ -2,10 +2,6 @@ package book.dukc.ch04_practice
 
 /**
  * 《深入理解Kotlin协程》chapter 4.1：序列生成器
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/25 10:08
  */
 fun main() {
     //序列生成器实际上包含了“序列”和“生成器”两部分。对于使用者而言，作为结果的“序列”更重要，而对于 API 的设计者而言，作为过程的“生成器”的实现才是关键。

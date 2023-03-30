@@ -1,20 +1,14 @@
 package core.flow
 
-import io.reactivex.internal.subscriptions.SubscriptionHelper.cancel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.cancellable
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 
 /**
- *Make flows cancellable.
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/30 15:39
+ * Make flows cancellable.
  */
 fun main() = runBlocking {
     //naturalCancellable(this)

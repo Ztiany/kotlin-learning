@@ -11,11 +11,7 @@ import java.io.File
 import kotlin.random.Random
 
 /**
- * 《深入理解Kotlin协程》chapter 6.4：select
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/25 10:08
+ * 《深入理解 Kotlin 协程》chapter 6.4：select
  */
 suspend fun main() {
     //在 UNIX 的 IO 多路复用中，我们应该都接触过 select，其实在协程中，select 的作用也与在 UNIX 中类似。

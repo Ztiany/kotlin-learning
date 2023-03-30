@@ -1,4 +1,4 @@
-package concept
+package practice
 
 
 /**斐波那契数列*/
@@ -7,13 +7,15 @@ interface Sequence<out T> {
 }
 
 /**
-延迟计算斐波那契数列，斐波那契数列公式：
-```
-F0 =0
-F1=1
-Fn=F(n-1)+F(n-2);(n>=2)
-```
- */
+* 延迟计算斐波那契数列，斐波那契数列公式：
+*
+* ```
+* F0 =0
+* F1=1
+* Fn=F(n-1)+F(n-2);(n>=2)
+* ```
+*
+*/
 fun main() {
     //Builds a [Sequence] lazily yielding values one by one.
     //使用协程，可以实现懒计算和缓存之前的计算结果

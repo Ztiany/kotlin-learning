@@ -6,9 +6,6 @@ import java.util.List;
 
 /**
  * Java 泛型与 Kotlin 泛型对比。
- *
- * @author Ztiany
- * Email: ztiany3@gmail.com
  */
 public class JavaGeneric {
 

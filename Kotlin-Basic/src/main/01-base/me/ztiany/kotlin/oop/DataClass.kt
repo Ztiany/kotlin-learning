@@ -1,13 +1,6 @@
 package me.ztiany.kotlin.oop
 
 /**
- *数据类
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 17.5.30 16:22
- */
-
-/**
  * 数据类：创建一些只保存数据的类。在这些类中，一些标准函数往往是从 数据机械推导而来的。在 Kotlin 中，这叫做 数据类 并标记为 data
  *
  * 编译器自动从主构造函数中声明的所有属性导出以下成员：
@@ -33,7 +26,6 @@ private data class UserModel(val name: String = "XO", val age: Int = 19)
 private class UserEntity(val name: String, val age: Int)
 
 private fun testUserModel() {
-
     //数据类与非数据类的区别
     val userModel = UserModel()
     val userEntity = UserEntity("XY", 10)

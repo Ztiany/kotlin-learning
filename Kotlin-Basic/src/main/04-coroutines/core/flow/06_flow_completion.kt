@@ -3,11 +3,7 @@ package core.flow
 import kotlinx.coroutines.flow.*
 
 /**
- *handle completion.
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/30 15:39
+ * handle completion.
  */
 suspend fun main() {
     //imperatively()//会中断协程【因为没有使用协程内置的错误处理机制】

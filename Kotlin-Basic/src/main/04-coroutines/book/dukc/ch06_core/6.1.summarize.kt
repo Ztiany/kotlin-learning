@@ -8,10 +8,6 @@ import kotlin.coroutines.coroutineContext
 
 /**
  * 《深入理解Kotlin协程》chapter 6.1：协程框架概述
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/25 10:08
  */
 suspend fun main() {
     //协程框架的构成【6.1.1】

@@ -11,8 +11,6 @@ import kotlin.concurrent.thread
 /**
  *
  * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2019/8/25 11:09
  */
 @ExperimentalCoroutinesApi
 suspend fun main() {

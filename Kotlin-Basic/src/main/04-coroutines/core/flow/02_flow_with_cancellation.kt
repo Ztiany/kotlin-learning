@@ -6,11 +6,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withTimeoutOrNull
 
 /**
- *Cancellation.
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/30 15:39
+ * Cancellation.
  */
 suspend fun main() {
     //withTimeout(3000){

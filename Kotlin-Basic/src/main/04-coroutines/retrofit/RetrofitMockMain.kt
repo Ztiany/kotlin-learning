@@ -8,12 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-/**
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/1/10 16:23
- */
+
 private val okHttpClient = OkHttpClient.Builder().build()
 
 private val retrofit = Retrofit.Builder().apply {

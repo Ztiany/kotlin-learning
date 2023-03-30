@@ -4,11 +4,7 @@ import kotlin.concurrent.thread
 import kotlin.coroutines.*
 
 /**
- * 《深入理解Kotlin协程》chapter 3.4：拦截器
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/29 14:17
+ * 《深入理解 Kotlin 协程》chapter 3.4：拦截器
  */
 suspend fun main() {
 /*

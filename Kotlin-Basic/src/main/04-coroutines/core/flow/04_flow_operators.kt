@@ -9,11 +9,7 @@ import kotlinx.coroutines.withContext
 import kotlin.system.measureTimeMillis
 
 /**
- * operators.
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/30 15:39
+ * operators
  */
 suspend fun main() {
     //transform

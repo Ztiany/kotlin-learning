@@ -12,10 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger
 
 /**
  * 《深入理解Kotlin协程》chapter 6.5：并发安全
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/25 10:08
  */
 suspend fun main() {
     //我们使用线程在解决并发问题的时候总是会遇到线程安全的问题，而 Java 平台上的 Kotlin 协程实现免不了存在并发调度的情况，因此线程安全同样值得留意。

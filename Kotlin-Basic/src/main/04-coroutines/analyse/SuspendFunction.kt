@@ -1,9 +1,9 @@
-package concept
+package analyse
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Unconfined
 
-/** 理解Suspend函数 */
+/** 理解 Suspend 函数 */
 @ExperimentalCoroutinesApi
 fun main() {
     //asyncCallbackSample() //传统异步回调方式
@@ -67,7 +67,7 @@ private fun coroutinesSwitch() {
 //====================================================================
 //  协程的同步返回
 //====================================================================
-fun asyncReturnSample1() = runBlocking {
+private fun asyncReturnSample1() = runBlocking {
     //1 在主线程启动协程
     println("1 主线程开启协程")
     println("2 在主线程协程中开启新的协程异步查询数据")

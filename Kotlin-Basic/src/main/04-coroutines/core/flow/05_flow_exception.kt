@@ -3,11 +3,7 @@ package core.flow
 import kotlinx.coroutines.flow.*
 
 /**
- *exceptions handling.
- *
- * @author Ztiany
- *          Email ztiany3@gmail.com
- *          Date 2020/9/30 15:39
+ * exceptions handling.
  */
 suspend fun main() {
     tryCatchFlow()
