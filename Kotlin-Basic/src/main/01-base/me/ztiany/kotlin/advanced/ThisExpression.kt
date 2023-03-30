@@ -29,7 +29,6 @@ private class A { // 隐式标签 @A
                 // 没有任何接收者
                 val d1 = this
             }
-
         }
     }
 }

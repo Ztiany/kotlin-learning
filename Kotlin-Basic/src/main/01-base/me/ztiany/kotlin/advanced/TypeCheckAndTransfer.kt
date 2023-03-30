@@ -17,7 +17,6 @@ package me.ztiany.kotlin.advanced
  *      “不安全的”转换操作符：通常，如果转换是不可能的，转换操作符会抛出一个异常。因此，我们称之为不安全的。 Kotlin 中的不安全转换由中缀操作符 完成
  *      “安全的”（可空）转换操作符：为了避免抛出异常，可以使用安全转换操作符 as?，它可以在失败时返回 null
  */
-
 private fun typeCheck() {
     //类型检擦
     var obj: Any? = "abc"

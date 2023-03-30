@@ -1,4 +1,4 @@
-package me.ztiany.library.serialization
+package me.ztiany.kotlin.tool.serialization
 
 /*
 @Serializable

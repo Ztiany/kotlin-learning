@@ -31,9 +31,6 @@ import kotlin.reflect.jvm.javaGetter
  *
  * 另外可以参考：重新审视 Kotlin 反射，我觉得可以合理使用，https://mp.weixin.qq.com/s/ScufhaG8Pu5gk_fF3rW90g
  */
-
-
-//类引用
 private fun classReference() {
     //类引用：该引用是 KClass 类型的值。
     val strClazz = String::class
@@ -49,7 +46,6 @@ private fun classReference() {
 
     println(str::class)
     println(str::class.java)
-
 }
 
 

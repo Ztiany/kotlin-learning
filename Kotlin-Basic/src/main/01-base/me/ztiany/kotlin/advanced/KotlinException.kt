@@ -18,8 +18,6 @@ import java.nio.file.Paths
  *          1，throw 表达式的类型是特殊类型 Nothing。 该类型没有值，而是用于标记永远不能达到的代码位置。
  *          2，在你自己的代码中，你可以使用 Nothing 来标记一个永远不会返回的函数：
  */
-
-
 fun main(args: Array<String>) {
 
     val a: Int? = try {

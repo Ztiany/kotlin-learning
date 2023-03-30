@@ -1,4 +1,4 @@
-package me.ztiany.new.kt16
+package me.ztiany.newf.kt16_2
 
 fun <T> elvisLike(x: T, y: T & Any): T & Any = x ?: y
 
