@@ -1,6 +1,7 @@
 package me.ztiany.kotlin.dsl
 
-/** DSL
+/**
+ * DSL
  *
  * 领域特定语言，用于针对某一个领域而构建的语言，比如 SQL 和 正则表达式。DSL 可以分为`外部 DSL` 和 `内部 DSL`。
  *
