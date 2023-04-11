@@ -1,11 +1,10 @@
 package me.ztiany.newf.kt17_2
 
-import sun.jvm.hotspot.oops.CellTypeState.value
 
 /**
  * Our research shows that this new operator does a better job at expressing open-ended ranges and making it clear that the upper bound is not included.
  *
- * Here is an example of using the ..< operator in a when expression:
+ * Here is an example of using the [..<] operator in a when expression:
  */
 @OptIn(ExperimentalStdlibApi::class)
 fun main() {
