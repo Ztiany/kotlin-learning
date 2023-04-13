@@ -1,14 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.8.0"
-    kotlin("kapt") version "1.8.20"
+    kotlin("jvm")
+    kotlin("kapt")
     application
-}
-
-group = "me.ztiany"
-version = "1.0"
-
-repositories {
-    mavenCentral()
 }
 
 dependencies {

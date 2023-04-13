@@ -1,12 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.8.0"
-}
-
-group = "me.ztiany"
-version = "1.0"
-
-repositories {
-    mavenCentral()
+    kotlin("jvm")
 }
 
 dependencies {
