@@ -2,6 +2,10 @@ rootProject.name = "Kotlin-CompilerAPI"
 
 include("kapt-api")
 include("kapt-main")
+
+include("ksp-api")
+include("ksp-main")
+
 include("kcp-plugin-gradle")
 include("kcp-plugin-kotlin-demo")
 include("kcp-plugin-kotlin-debuglog")

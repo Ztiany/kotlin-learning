@@ -23,6 +23,7 @@ class DebugLogCommandLineProcessor : CommandLineProcessor {
         ),
     )
 
+
     override fun processOption(
         option: AbstractCliOption,
         value: String,
