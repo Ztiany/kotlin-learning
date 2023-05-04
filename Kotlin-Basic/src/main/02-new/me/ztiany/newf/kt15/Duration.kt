@@ -4,7 +4,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import sun.jvm.hotspot.oops.CellTypeState.value
 import kotlin.time.ExperimentalTime
 import kotlin.time.TimeSource
 import kotlin.time.measureTime
@@ -45,7 +44,7 @@ suspend fun main() {
         1000
     }
 
-    println(value)
+    println(value2)
     println(duration2)
 
     val scope = CoroutineScope(Dispatchers.IO)
