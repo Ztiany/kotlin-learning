@@ -35,11 +35,13 @@ version = "1.0"
 //apply plugin: 'kotlinx-serialization'
 //apply plugin: 'kotlinx-atomicfu'
 
-/*noArg {
+/*
+noArg {
     annotation("me.ztiany.noarg.NoArg")
     //default is true
     invokeInitializers = true
-}*/
+}
+*/
 
 repositories {
     google()
@@ -60,7 +62,8 @@ sourceSets {
             //kotlin 扩展库学习
             "src/main/05-thirds",
             //慕课网教程示例代码
-            "src/main/06-imooc"]
+            "src/main/06-imooc"
+    ]
 }
 
 dependencies {
@@ -68,9 +71,12 @@ dependencies {
     def arrow_version = "1.1.2"
     def retrofit_version = "2.9.0"
 
+    //================================================================================
     //test
+    //================================================================================
     testImplementation 'junit:junit:4.13.2'
     testImplementation "org.jetbrains.kotlin:kotlin-test"
+
 
     //================================================================================
     //Kotlin
@@ -84,12 +90,22 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:${coroutines_version}"
 
     //kotlin tools
-    //https://github.com/JetBrains/kotlin/tree/master/libraries/kotlinx-metadata/jvm
-    implementation 'org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0'
     //https://github.com/Kotlin/kotlinx.serialization
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-core:1.4.0'
     //https://github.com/Kotlin/kotlinx.atomicfu
     implementation 'org.jetbrains.kotlinx:atomicfu:0.17.0'
+
+
+    //================================================================================
+    //Kotlin/JVM: Metadata and Reflection
+    //================================================================================
+    //https://github.com/JetBrains/kotlin/tree/master/libraries/kotlinx-metadata/jvm
+    implementation 'org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0'
+    //https://github.com/bennyhuo/kotlinp
+    implementation("com.bennyhuo.kotlin:kotlinp:1.8.10")
+    //https://square.github.io/kotlinpoet/interop-kotlinx-metadata/
+    implementation("com.squareup:kotlinpoet-metadata:1.13.0")
+
 
     //================================================================================
     //RxJava
@@ -98,8 +114,9 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
 
+
     //================================================================================
-    //retrofit with coroutine
+    //network and json: retrofit, okhttp, moshi, gson
     //================================================================================
     //https://github.com/square/moshi
     implementation 'com.squareup.moshi:moshi:1.14.0'
@@ -119,6 +136,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:mockwebserver:4.10.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
 
+
     //================================================================================
     //bennyhuo
     //================================================================================
@@ -135,8 +153,9 @@ dependencies {
     //implementation "com.bennyhuo.kotlin:deepcopy-annotations:1.1.0"
     //kapt "com.bennyhuo.kotlin:deepcopy-compiler:1.1.0"
 
+
     //================================================================================
-    //arrow
+    //functional: arrow, mapstruct
     //================================================================================
     //arrow
     implementation "io.arrow-kt:arrow-core:${arrow_version}"
