@@ -46,6 +46,7 @@ suspend fun main() {
 
     println(value1)
     println(duration1)
+
     println(value2)
     println(duration2)
 
