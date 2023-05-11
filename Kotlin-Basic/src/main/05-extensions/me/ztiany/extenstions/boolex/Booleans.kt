@@ -1,4 +1,4 @@
-package me.ztiany.library.boolex
+package me.ztiany.extenstions.boolex
 
 //Boolean扩展：https://blog.kotliner.cn/2017/06/19/interesting-booleanext/
 

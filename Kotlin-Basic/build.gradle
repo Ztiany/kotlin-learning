@@ -59,8 +59,8 @@ sourceSets {
             "src/main/03-tools",
             //协程
             "src/main/04-coroutines",
-            //kotlin 扩展库学习
-            "src/main/05-thirds",
+            //kotlin 扩展库、新范式的学习
+            "src/main/05-extensions",
             //慕课网教程示例代码
             "src/main/06-imooc"
     ]

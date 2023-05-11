@@ -1,4 +1,4 @@
-package me.ztiany.library.rxkt
+package me.ztiany.extenstions.rxkt
 
 import io.reactivex.Maybe
 import io.reactivex.rxkotlin.subscribeBy
