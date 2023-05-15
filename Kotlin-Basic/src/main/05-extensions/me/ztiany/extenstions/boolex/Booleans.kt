@@ -1,7 +1,5 @@
 package me.ztiany.extenstions.boolex
 
-//Boolean扩展：https://blog.kotliner.cn/2017/06/19/interesting-booleanext/
-
 sealed class BooleanExt<out T> constructor(val boolean: Boolean)
 
 object Otherwise : BooleanExt<Nothing>(true)
@@ -12,6 +10,7 @@ inline fun <T> Boolean.yes(block: () -> T): BooleanExt<T> = when {
     this -> {
         WithData(block())
     }
+
     else -> Otherwise
 }
 

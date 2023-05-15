@@ -35,7 +35,10 @@ package me.ztiany.kotlin.function
  *
  * 和类型一次只能是其中的某种类型，要么是 A，要么是 B，不能同时拥有这两种类型，所以它代表的是“OR”的含义。
  *
- * 具体参考《Kotlin 核心编程》第四章。
+ * 具体参考：
+ *
+ *  - 《Kotlin 核心编程》第四章。
+ *  - [十年学会函数式编程：ADT(Algebraic Data Type)](https://jxq.me/post/teach-yourself-functional-programming-in-ten-years/part-2-adt/)
  */
 fun main() {
 
