@@ -47,4 +47,3 @@ Even though many users have asked for pattern matching to be included in the Kot
 the creators have taken a strong stance against it, claiming that it would make the language too complex.
 We sincerely hope that it will be included in the language at a future date.
  */
-

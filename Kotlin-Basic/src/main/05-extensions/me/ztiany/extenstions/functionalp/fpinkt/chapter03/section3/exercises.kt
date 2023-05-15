@@ -48,8 +48,31 @@ fun <A> dropWhile(l: List<A>, f: (A) -> Boolean): List<A> = when (l) {
 }
 
 /*
- 3.5: Both drop and dropWhile employed data sharing to achieve their purposes. A more surprising example of data sharing is the following function,
+ 3.5: Not everything works out so nicely as when we append two lists to each other. Implement a function, init, that returns a List consisting of all but the last
+ element of a List. So, given List(1, 2, 3, 4), init should return List(1, 2, 3). Why can’t this function be implemented in constant time like tail?
+
+ Due to the structure of a singly linked list, any time we want to replace the tail of a Cons, even if it’s the last Cons in the list,
+ we must copy all the previous Cons objects. Writing purely functional data structures that support different operations efficiently is all about finding clever ways
+ to exploit data sharing. We’re not going to cover these data structures here; for now, we’re content to use the functional data structures others have written.
+ */
+fun <A> init(xs: List<A>): List<A> = when (xs) {
+    is Nil -> throw IllegalStateException("init called on empty list")
+    is Cons ->
+        if (xs.tail == Nil) Nil
+        else Cons(xs.head, init(xs.tail))
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+// Appending all elements of one list to another
+///////////////////////////////////////////////////////////////////////////
+/*
+ Both drop and dropWhile employed data sharing to achieve their purposes. A more surprising example of data sharing is the following function,
  which adds all the elements of one list to the end of another.
+
+ Note that this definition only copies values until the first list is exhausted, so its run time and memory usage are determined only by the length of a1.
+ The remaining list then just points to a2. If we were to implement this same function for two arrays, we’d be forced to copy all the elements in both arrays
+ into the result. In this case, the immutable linked list is much more efficient than an array!
 */
 fun <A> appendList(a1: List<A>, a2: List<A>): List<A> = when (a1) {
     is Nil -> a2
