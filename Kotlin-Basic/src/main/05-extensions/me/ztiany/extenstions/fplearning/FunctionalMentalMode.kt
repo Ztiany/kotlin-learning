@@ -76,7 +76,7 @@ private fun circle(radius: Double): inRange {
  */
 private fun shift(offset: Position, range: inRange): inRange {
     return { position ->
-        //重新计算点的位置
+        // 将 position 偏移 offset 指定的距离
         val dx = position.xPosition - offset.xPosition
         val dy = position.yPosition - offset.yPosition
         //We could use the circle function defined before. This is one of the fundamental building blocks of functional programming.
