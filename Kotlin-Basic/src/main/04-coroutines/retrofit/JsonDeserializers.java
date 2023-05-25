@@ -1,17 +1,35 @@
-package http;
+package retrofit;
 
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
+import com.google.gson.*;
 import kotlin.Unit;
 
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 
 /**
  * @author Ztiany
  */
 class JsonDeserializers {
+
+    private final static Gson GSON = new GsonBuilder()
+            .excludeFieldsWithModifiers(Modifier.TRANSIENT)
+            .excludeFieldsWithModifiers(Modifier.STATIC)
+            /*容错处理*/
+            .registerTypeAdapter(int.class, new PrimitiveIntegerJsonDeserializer())
+            .registerTypeAdapter(float.class, new JsonDeserializers.PrimitiveFloatJsonDeserializer())
+            .registerTypeAdapter(double.class, new JsonDeserializers.PrimitiveDoubleJsonDeserializer())
+            .registerTypeAdapter(Integer.class, new JsonDeserializers.IntegerJsonDeserializer())
+            .registerTypeAdapter(Float.class, new JsonDeserializers.FloatJsonDeserializer())
+            .registerTypeAdapter(Double.class, new JsonDeserializers.DoubleJsonDeserializer())
+            .registerTypeAdapter(String.class, new JsonDeserializers.StringJsonDeserializer())
+            .registerTypeAdapter(Void.class, new JsonDeserializers.VoidJsonDeserializer())
+            .registerTypeAdapter(Unit.class, new JsonDeserializers.UnitJsonDeserializer())
+            .create();
+
+    static Gson gson() {
+        return GSON;
+    }
+
 
     static class PrimitiveIntegerJsonDeserializer implements JsonDeserializer<Integer> {
 

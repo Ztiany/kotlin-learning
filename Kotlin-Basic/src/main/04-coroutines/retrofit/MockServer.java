@@ -16,6 +16,7 @@ import okio.Okio;
 public class MockServer extends Dispatcher {
 
     private final String root;
+
     private final int port;
 
     public MockServer(String root, int port) {
@@ -34,9 +35,11 @@ public class MockServer extends Dispatcher {
     public MockResponse dispatch(RecordedRequest request) {
         String path = request.getPath();
         try {
+
             if (!path.startsWith("/") || path.contains("..")) throw new FileNotFoundException();
             File file = new File(root + path);
             return file.isDirectory() ? directoryToResponse(path, file) : fileToResponse(path, file);
+
         } catch (FileNotFoundException e) {
 
             return new MockResponse()
@@ -106,6 +109,7 @@ public class MockServer extends Dispatcher {
     }
 
     public static final String ROOT = "127.0.0.1";
+
     public static final int PORT = 9885;
 
 }

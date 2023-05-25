@@ -42,7 +42,7 @@ fun sample4() {
     Thread.sleep(3000)
 }
 
-/* 如果是 RxJava 处理 Retrofit 结果，那么如果服务器 body 返回空，对于 Signle 来说，会调用 onError，异常为 NoSuchElementException。*/
+/* 如果是 RxJava 处理 Retrofit 结果，那么如果服务器 body 返回空，对于 Single 来说，会调用 onError，异常为 NoSuchElementException。*/
 fun sample3() {
     githubApi.mock3()
             .subscribe(

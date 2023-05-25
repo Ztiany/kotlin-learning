@@ -22,10 +22,11 @@ interface GitHubRetrofit {
 
     @GET("/")
     fun mock4(): Flowable<MockResult<String>?>
+
 }
 
 class MockResult<T>(
-        val data: T,
-        val status: Int,
-        val message: String
+    val data: T,
+    val status: Int,
+    val message: String
 )
