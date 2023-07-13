@@ -12,7 +12,7 @@ import kotlinx.coroutines.*
 
 CoroutineExceptionHandler 仅在未捕获的异常上调用——即没有以其他任何方式处理的异常才会交给 CoroutineExceptionHandler 处理。
 
-        1. 所有子协程委托 它们的父协程 处理它们的异常，然后它们也委托给其父协程，以此类推直到根协程， 因此永远不会使用在其上下文中设置的 CoroutineExceptionHandler。
+        1. 对于所有子协程委托，它们的父协程处理它们的异常，然后它们也委托给其父协程，以此类推直到根协程， 因此永远不会使用在其上下文中设置的 CoroutineExceptionHandler。
         2. async 构建器始终会捕获所有异常并将其表示在结果 Deferred 对象中， 因此它的 CoroutineExceptionHandler 也无效。
  */
 fun main() = runBlocking {

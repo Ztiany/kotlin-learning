@@ -48,7 +48,7 @@ fun main() = runBlocking {
 
         //父协程将得不到执行。
         joinAll(sub1, sub2)
-        print("running in the parent")
+        println("running in the parent")
     }
 
     job.join()
