@@ -20,11 +20,14 @@ fun main() = runBlocking {
                 delay(500L)
             }
         } catch (e: CancellationException) {
+            println("I'm running in catch")
             e.printStackTrace()
+            //throw e
         } finally {
             //如果暂停状态被取消，将会抛出异常，所以需要在finally中释放资源
             println("I'm running finally")
         }
+        println("I'm running at the bottom")
     }
     delay(1300L) // delay a bit
     println("me.ztiany.tools.main: I'm tired of waiting!")

@@ -21,8 +21,11 @@ plugins {
     id 'application'
 }
 
-
 repositories {
+    maven { url "https://maven.aliyun.com/repository/gradle-plugin" }
+    maven { url "https://maven.aliyun.com/repository/public" }
+    maven { url "https://maven.aliyun.com/repository/central" }
+    maven { url "https://maven.aliyun.com/repository/apache-snapshots" }
     google()
     mavenCentral()
     gradlePluginPortal()
@@ -44,12 +47,6 @@ noArg {
     invokeInitializers = true
 }
 */
-
-repositories {
-    google()
-    mavenCentral()
-    gradlePluginPortal()
-}
 
 sourceSets {
     main.kotlin.srcDirs += [

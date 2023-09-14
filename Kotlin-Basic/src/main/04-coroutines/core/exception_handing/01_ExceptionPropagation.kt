@@ -9,6 +9,14 @@ import kotlinx.coroutines.*
  */
 fun main() = runBlocking {
 
+
+    CoroutineScope(Dispatchers.Default).launch {
+        val a = withContext(Dispatchers.IO) {
+            1 / 0
+        }
+    }
+
+
     //通过 GlobeScope 启动的协程单独启动一个协程作用域，内部的子协程遵从默认的作用域规则。通过 GlobeScope 启动的协程“自成一派”。
     val job = GlobalScope.launch {
         delay(2000)

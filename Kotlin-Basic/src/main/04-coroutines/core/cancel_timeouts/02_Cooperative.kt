@@ -4,11 +4,11 @@ import kotlinx.coroutines.*
 
 
 /*
-协程的取消是 协作 的。一段协程代码必须协作才能被取消。 所有 kotlinx.coroutines 中的挂起函数都是 可被取消的 。它们检查协程的取消，
+协程的取消是 协作 的。一段协程代码必须协作才能被取消。 所有 kotlinx.coroutines 中的挂起函数都是可被取消的 。它们检查协程的取消，
 并在取消时抛出 CancellationException。 然而，如果协程正在执行计算任务，并且没有检查取消的话，那么它是不能被取消的，就如如下示例代码所示：
 
-1. kotlinx.coroutines中的所有suspend函数都可以取消。
-2. 如果协程正在运行中，并且不检查取消状态，则它不能被取消(即使调用了cancel)，
+1. kotlinx.coroutines 中的所有 suspend 函数都可以取消。
+2. 如果协程正在运行中，并且不检查取消状态，则它不能被取消(即使调用了 cancel)，
  */
 fun main() = runBlocking {
     //sampleStart
