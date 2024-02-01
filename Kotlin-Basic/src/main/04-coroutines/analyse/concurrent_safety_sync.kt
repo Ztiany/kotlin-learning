@@ -14,7 +14,7 @@ suspend fun main() {
 /**Synchronized 并不能和挂起函数配合工作*/
 //@Synchronized
 suspend fun criticalSectionSuspending() {
-    log("Starting!")
+    logCoroutine("Starting!")
     delay(10)//此时，criticalSectionSuspending 以及退出了，且释放了同步锁。
-    log("Ending!")
+    logCoroutine("Ending!")
 }

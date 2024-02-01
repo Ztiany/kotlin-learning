@@ -13,11 +13,11 @@ suspend fun main() {
 }
 
 private suspend fun sample1() {
-    log("1")
+    logCoroutine("1")
     val job = GlobalScope.launch(Dispatchers.Default + CoroutineName("你的名字")) {
-        log("2 ${coroutineContext[CoroutineName]?.name}")
+        logCoroutine("2 ${coroutineContext[CoroutineName]?.name}")
     }
-    log("3")
+    logCoroutine("3")
     job.join()
 }
 
@@ -53,21 +53,21 @@ private class DummyCoroutineContext : AbstractCoroutineContextElement(
 private suspend fun sample2() {
     //第 1 次拦截机会
     GlobalScope.launch(LogContinuationInterceptor()) {
-        log(1)
+        logCoroutine(1)
         //第 2 次拦截机会
         val job = async {
-            log(2)
+            logCoroutine(2)
             //第 3 次拦截机会
             delay(1000)
-            log(3)
+            logCoroutine(3)
             "Hello"
         }
-        log(4)
+        logCoroutine(4)
         //第 4 次拦截机会
         val result = job.await()
-        log("5. $result")
+        logCoroutine("5. $result")
     }.join()
-    log(6)
+    logCoroutine(6)
 }
 
 private class LogContinuationInterceptor : ContinuationInterceptor {
@@ -81,7 +81,7 @@ private class LogContinuationInterceptor : ContinuationInterceptor {
         override val context = original.context
 
         override fun resumeWith(result: Result<T>) {
-            log("<LogContinuation> $result")
+            logCoroutine("<LogContinuation> $result")
             original.resumeWith(result)
         }
 

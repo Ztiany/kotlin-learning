@@ -17,7 +17,7 @@ fun main() = runBlocking {
 
 private suspend fun demo8() {
     val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-        log("${coroutineContext[CoroutineName]} $throwable")
+        logCoroutine("${coroutineContext[CoroutineName]} $throwable")
     }
 
     CoroutineScope(Job() /*指定了 Job，不影响外部协程了*/ + exceptionHandler).launch {
@@ -40,54 +40,54 @@ private suspend fun demo8() {
 //https://juejin.cn/post/6844903854245429255
 private suspend fun demo7() {
     val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-        log("${coroutineContext[CoroutineName]} $throwable")
+        logCoroutine("${coroutineContext[CoroutineName]} $throwable")
     }
 
-    log(1)
+    logCoroutine(1)
     try {
         supervisorScope { //①
 //        coroutineScope { //①
-            log(2)
+            logCoroutine(2)
 
             launch(exceptionHandler + CoroutineName("②")) { // ②
-                log(3)
+                logCoroutine(3)
 
                 //对于 supervisorScope 的子协程 （例如 ②）的子协程（例如 ③），如果没有明确指出，它是遵循默认的作用于规则的，也就是 coroutineScope 的规则了，
                 // 出现未捕获的异常会尝试传递给父协程并尝试取消父协程。所以这里的异常，由 ② 处设置的 exceptionHandler 处理。
                 launch(exceptionHandler + CoroutineName("③")) { // ③
-                    log(4)
+                    logCoroutine(4)
                     delay(100)
                     throw ArithmeticException("Hey!!")
                 }
 
-                log(5)
+                logCoroutine(5)
             }
 
-            log(6)
+            logCoroutine(6)
 
             val job = launch { // ④
-                log(7)
+                logCoroutine(7)
                 delay(1000)
             }
 
             try {
-                log(8)
+                logCoroutine(8)
                 job.join()
-                log("9")
+                logCoroutine("9")
             } catch (e: Exception) {
-                log("10. $e")
+                logCoroutine("10. $e")
             }
 
         }//supervisorScope end
 
-        log(11)
+        logCoroutine(11)
     } catch (e: Exception) {
         //这个是我们对 coroutineScope 整体的一个捕获，如果 coroutineScope 内部以为异常而结束，那么我们是可以对它直接 try ... catch ... 来捕获这个异常的，
         // 这再一次表明协程把异步的异常处理到同步代码逻辑当中。
-        log("12. $e")
+        logCoroutine("12. $e")
     }
 
-    log(13)
+    logCoroutine(13)
 }
 
 private suspend fun demo6() {
@@ -121,31 +121,31 @@ private suspend fun demo6() {
 private suspend fun demo5() {
     coroutineScope { //①
 
-        log(2)
+        logCoroutine(2)
 
         launch { // ②
-            log(3)
+            logCoroutine(3)
             launch { // ③
-                log(4)
+                logCoroutine(4)
                 delay(100)
                 throw ArithmeticException("Hey!!")
             }
-            log(5)
+            logCoroutine(5)
         }
 
-        log(6)
+        logCoroutine(6)
 
         val job = launch { // ④
-            log(7)
+            logCoroutine(7)
             delay(1000)
         }
 
         try {
-            log(8)
+            logCoroutine(8)
             job.join()
-            log("9")
+            logCoroutine("9")
         } catch (e: Exception) {
-            log("10. $e")
+            logCoroutine("10. $e")
         }
     }
 }

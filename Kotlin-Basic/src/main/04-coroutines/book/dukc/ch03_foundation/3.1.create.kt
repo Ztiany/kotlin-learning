@@ -1,7 +1,6 @@
 package book.dukc.ch03_foundation
 
-import analyse.log
-import kotlinx.coroutines.Dispatchers
+import analyse.logCoroutine
 import kotlinx.coroutines.delay
 import kotlin.coroutines.*
 
@@ -40,14 +39,14 @@ private fun createCoroutine() {
             返回值是一个 Continuation 对象，由于现在协程仅仅被创建出来，因此需要通过这个值在之后触发协程的启动。
      */
     val continuation = suspend {
-        log("In coroutine")
+        logCoroutine("In coroutine")
         4
     }.createCoroutine(object : Continuation<Int> {
         override val context: CoroutineContext
             get() = EmptyCoroutineContext /*+ Dispatchers.Default*/
 
         override fun resumeWith(result: Result<Int>) {
-            log("Coroutine End: $result")
+            logCoroutine("Coroutine End: $result")
         }
     })
 

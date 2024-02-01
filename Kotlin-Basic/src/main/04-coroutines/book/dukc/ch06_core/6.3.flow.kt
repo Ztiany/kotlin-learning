@@ -1,6 +1,6 @@
 package book.dukc.ch06_core
 
-import analyse.log
+import analyse.logCoroutine
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.collect
@@ -87,21 +87,21 @@ private suspend fun switchingThread() {
         collect 对应 observeOn【因为 collect 是一个挂起函数，有自己的调度器，不再需要类似 observeOn 的 API 来特意指定】
  */
     withContext(Executors.newFixedThreadPool(1).asCoroutineDispatcher()) {
-        log("1")
+        logCoroutine("1")
         flow {
             emit(1)
-            log("2")
+            logCoroutine("2")
         }.map {
-            log("3")
+            logCoroutine("3")
             it
         }.flowOn(Dispatchers.IO).map {
-            log("4")
+            logCoroutine("4")
             it
         }.map {
-            log("5")
+            logCoroutine("5")
             it
         }.collect {
-            log("6")
+            logCoroutine("6")
         }
     }
 }

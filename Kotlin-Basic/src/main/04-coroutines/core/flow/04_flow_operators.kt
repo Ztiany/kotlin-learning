@@ -1,6 +1,6 @@
 package core.flow
 
-import analyse.log
+import analyse.logCoroutine
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -158,26 +158,26 @@ private suspend fun flowAreSequential() {
 private suspend fun flowOnOperator() {
     //collect：Collection of a flow always happens in the context of the calling coroutine.【main】
     flow {
-        log("Started simple flow")
+        logCoroutine("Started simple flow")
         // Since simple().collect is called from the main thread, the body of simple 's flow is also called in the main thread.
         // This is the perfect default for fast-running or asynchronous code that does not care about the execution context and does not block the caller.
         for (i in 1..3) {
             emit(i)
         }
     }.collect { value ->
-        log("Collected $value")
+        logCoroutine("Collected $value")
     }
 
     // collect with withContext：Collection of a flow always happens in the context
     // of the calling coroutine.【DefaultDispatcher-worker-1】
     withContext(Dispatchers.Default) {
         flow {
-            log("Started simple flow")
+            logCoroutine("Started simple flow")
             for (i in 1..3) {
                 emit(i)
             }
         }.collect { value ->
-            log("WithContext Collected $value")
+            logCoroutine("WithContext Collected $value")
         }
     }
 
@@ -199,14 +199,14 @@ private suspend fun flowOnOperator() {
     flow {
         for (i in 1..3) {
             Thread.sleep(100) // pretend we are computing it in CPU-consuming way
-            log("Emitting $i")
+            logCoroutine("Emitting $i")
             emit(i) // emit next value
         }
     }
             //notice: The flowOn operator will change the default sequential nature of the flow.
             .flowOn(Dispatchers.Default)
             .collect { value ->
-                log("Collected $value")
+                logCoroutine("Collected $value")
             }
 
 }

@@ -22,18 +22,16 @@ fun main() = runBlocking {
         }
     }
 
-    userResponse.value?.let { log(it) }
+    userResponse.value?.let { logCoroutine(it) }
     //如果先返回的是本地缓存，那么我们还需要获取网络结果来展示最新结果
     userResponse.isLocal.takeIf { it }?.let {
         val userFromApi = remoteDeferred.await()
         //cacheUser(login, userFromApi)
-        log(userFromApi)
+        logCoroutine(userFromApi)
     }
-
 
     Unit
 }
-
 
 private class Response<T>(val value: T, val isLocal: Boolean)
 

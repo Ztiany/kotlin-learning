@@ -8,19 +8,19 @@ import kotlin.coroutines.intrinsics.createCoroutineUnintercepted
 import kotlin.coroutines.resume
 
 suspend fun commonSuspendFun1(): String {
-    log("commonSuspendFun1")
+    logCoroutine("commonSuspendFun1")
     delay(100)
     return "[hello world 1] "
 }
 
 suspend fun commonSuspendFun2(): String {
-    log("commonSuspendFun2")
+    logCoroutine("commonSuspendFun2")
     delay(100)
     return "[hello world 2]  "
 }
 
 suspend fun commonSuspendFun3(): String {
-    log("commonSuspendFun3")
+    logCoroutine("commonSuspendFun3")
     delay(100)
     return "[hello world 3]"
 }

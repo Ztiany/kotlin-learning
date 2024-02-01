@@ -23,51 +23,49 @@ suspend fun main() {
 
 @ExperimentalCoroutinesApi
 private suspend fun sample5() {
-    log(1)
+    logCoroutine(1)
     val job = GlobalScope.launch(start = UNDISPATCHED) {
-        log(2)
+        logCoroutine(2)
         delay(100)
-        log(3)
+        logCoroutine(3)
     }
-    log(4)
+    logCoroutine(4)
     job.join()
-    log(5)
+    logCoroutine(5)
 }
 
 @ExperimentalCoroutinesApi
 private suspend fun sample4() {
-    log(1)
+    logCoroutine(1)
     val job = GlobalScope.launch(start = ATOMIC) {
-        log(2)
+        logCoroutine(2)
     }
     job.cancel()
-    log(3)
-
+    logCoroutine(3)
 }
 
 private suspend fun sample3() {
-    log(1)
+    logCoroutine(1)
     val job = GlobalScope.launch(start = LAZY) {
-        log(2)
+        logCoroutine(2)
     }
-    log(3)
+    logCoroutine(3)
     job.join()
-    log(4)
+    logCoroutine(4)
 }
 
 private suspend fun sample2() {
-    log(1)
+    logCoroutine(1)
     val job = GlobalScope.launch {
-        log(2)
+        logCoroutine(2)
     }
-    log(3)
+    logCoroutine(3)
     job.join()
-    log(4)
+    logCoroutine(4)
 }
 
 private fun sample1() {
     thread {
-        log("Hello")
+        logCoroutine("Hello")
     }
 }
-

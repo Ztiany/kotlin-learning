@@ -3,22 +3,22 @@ package analyse
 import kotlinx.coroutines.*
 
 suspend fun main() {
-    log("aaaaa")
+    logCoroutine("aaaaa")
     val deferred = GlobalScope.async {
-        log("bbbbb")
+        logCoroutine("bbbbb")
         delay(100)
-        log("ccccc")
+        logCoroutine("ccccc")
         delay(100)
-        log("ggggg")
+        logCoroutine("ggggg")
         delay(100)
-        log("fffff")
+        logCoroutine("fffff")
         delay(100)
-        log("ooooo")
+        logCoroutine("ooooo")
         123
     }
-    log(deferred.javaClass)
-    log("ddddd")
+    logCoroutine(deferred.javaClass)
+    logCoroutine("ddddd")
     val result = deferred.await()
-    log("eeeee")
-    log(result)
+    logCoroutine("eeeee")
+    logCoroutine(result)
 }

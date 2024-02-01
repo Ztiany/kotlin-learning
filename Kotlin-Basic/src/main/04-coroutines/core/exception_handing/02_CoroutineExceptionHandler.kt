@@ -1,9 +1,10 @@
 package core.exception_handing
 
+import analyse.logCoroutine
 import kotlinx.coroutines.*
 
 /*
-但是如果不想将所有的异常打印在控制台中呢？将未捕获异常打印到控制台的默认行为是可自定义的。
+将未捕获异常打印到控制台的默认行为是可自定义的。但是如果不想将所有的异常打印在控制台中呢？
 
     1. 根协程中的 CoroutineExceptionHandler 上下文元素可以被用于这个根协程通用的 catch 块，及其所有可能自定义了异常处理的子协程。 它类似于 Thread.uncaughtExceptionHandler 。
     2. 无法从 CoroutineExceptionHandler 的异常中恢复。当调用处理者的时候，协程已经完成并带有相应的异常。通常，该处理者用于记录异常，显示某种错误消息，终止和（或）重新启动应用程序。
@@ -29,10 +30,15 @@ fun main() = runBlocking {
     val deferred = GlobalScope.async(handler/*对于 async，handler 无效*/) {
         println("async")
         // Nothing will be printed, relying on user to call deferred.await()
-        throw ArithmeticException()
+        if (true) {
+            throw ArithmeticException()
+        }else{
+            "Hello"
+        }
     }
 
-    //deferred.await()，调用 deferred 的 await 会崩溃，而调用其 join，会按照 launch 的逻辑处理。
+   // val result = deferred.await() // 调用 deferred 的 await 会崩溃，而调用其 join，会按照 launch 的逻辑处理。
     joinAll(job, deferred)
+    logCoroutine("sampleEnd")
     //sampleEnd
 }
