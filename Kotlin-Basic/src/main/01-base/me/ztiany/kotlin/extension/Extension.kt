@@ -1,4 +1,4 @@
-package me.ztiany.kotlin.extend
+package me.ztiany.kotlin.extension
 
 import kotlin.reflect.KProperty
 

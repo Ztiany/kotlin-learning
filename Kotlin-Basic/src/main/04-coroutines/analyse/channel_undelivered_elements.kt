@@ -2,6 +2,8 @@ package analyse
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.consume
+import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -10,8 +12,8 @@ private val scope = CoroutineScope(SupervisorJob())
 
 suspend fun main() {
     //sample1()
-    //sample2()
-    sample3()
+    sample2()
+    //sample3()
 }
 
 private suspend fun sample1() {
@@ -41,7 +43,7 @@ private suspend fun sample1() {
 
 // 会有元素丢失
 private suspend fun sample2() {
-    val channel = Channel<String> {
+    val channel = Channel<String>(3) {
         println("Find a undeliveredElement: $it")
     }
 
@@ -54,11 +56,13 @@ private suspend fun sample2() {
     }
 
     val flow = channel.receiveAsFlow()
+    println("1----------------------------------------------------------------------------")
+    delay(5000)
 
     val subscriberJob1 = scope.launch {
         flow.onEach {
-                delay(200)
-            }
+            delay(200)
+        }
             .collect {
                 println("1-collect: $it")
             }
@@ -66,8 +70,9 @@ private suspend fun sample2() {
 
     delay(500)
     subscriberJob1.cancel()
+    println("2----------------------------------------------------------------------------")
 
-    delay(1000)
+    delay(5000)
     val subscriberJob2 = scope.launch {
         flow.onEach {
             delay(200)
@@ -76,10 +81,20 @@ private suspend fun sample2() {
                 println("2-collect: $it")
             }
     }
+
+    println("3----------------------------------------------------------------------------")
     delay(500)
     subscriberJob2.cancel()
 
+    /*channel.consumeEach {
+        delay(200)
+        println("consume: $it")
+    }
+    channel.close()*/
+
+    println("4----------------------------------------------------------------------------")
     delay(15000)
+    println("5----------------------------------------------------------------------------")
 }
 
 // 会触发 undeliveredElement
@@ -109,6 +124,12 @@ private suspend fun sample3() {
 
     delay(500)
     subscriberJob.cancel()
+
+    // Channel is closed, so the consumeEach call will cause Exception.
+    /*channel.consumeEach {
+        delay(200)
+        println("consume: $it")
+    }*/
 
     delay(15000)
 }

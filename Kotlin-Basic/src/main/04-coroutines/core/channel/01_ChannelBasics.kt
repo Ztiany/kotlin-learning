@@ -1,9 +1,10 @@
-package core.channels
+package core.channel
 
 
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.selects.select
 
 /*
 延期的值（Deferred）提供了一种便捷的方法使单个值在多个协程之间进行相互传输。 通道提供了一种在流中传输值的方法。
@@ -13,6 +14,7 @@ import kotlinx.coroutines.runBlocking
 fun main() = runBlocking {
     //sampleStart
     val channel = Channel<Int>()
+    
     launch {
         // this might be heavy CPU-consuming computation or async logic, we'll just send five squares
         for (x in 1..5) channel.send(x * x)

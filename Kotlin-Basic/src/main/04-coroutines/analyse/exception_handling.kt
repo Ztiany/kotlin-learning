@@ -12,8 +12,59 @@ fun main() = runBlocking {
 //    demo5()
 //    demo6()
 //    demo7()
-    demo8()
+//    demo8()
+//    demo9_1(this)
+    demo9_2()
 }
+
+private suspend fun demo9_1(scope: CoroutineScope) {
+    scope.launch {
+
+        try {
+            val usersDeferred = async {
+                delay(2000)
+                throw Exception("test------------demo9_1")
+            }
+            val moreUsersDeferred = async {
+                listOf("1", "2", "3")
+            }
+            val users = usersDeferred.await()
+            val moreUsers = moreUsersDeferred.await()
+        } catch (exception: Exception) {
+            // handle exception
+            logCoroutine(exception)
+        }
+
+    }.join()
+
+    // 不会被打印，上面 async 中的异常终止了整个协程。
+    println("demo9_1 end")
+}
+
+private suspend fun demo9_2() {
+    CoroutineScope(Dispatchers.Default)/*新的 Scope*/.launch {
+
+        try {
+            val usersDeferred = async {
+                delay(2000)
+                throw Exception("test------------demo9_2")
+            }
+            val moreUsersDeferred = async {
+                listOf("1", "2", "3")
+            }
+            val users = usersDeferred.await()
+            val moreUsers = moreUsersDeferred.await()
+        } catch (exception: Exception) {
+            // handle exception
+            logCoroutine(exception)
+        }
+
+    }.join()
+
+    // 会被打印，上面 async 中的异常终止的是新的 Scope，不会影响外部协程。
+    println("demo9_2 end")
+}
+
 
 private suspend fun demo8() {
     val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->

@@ -15,7 +15,7 @@ fun main() {
         }
     }
 
-    /*相比之下，比 Java 版本的简介多了。*/
+    /*相比之下，Kotlin 比 Java 版本的简介多了。*/
     val printStr = object : FunctionKT<String, Unit> {
         override fun apply(arg: String) {
             println(arg)

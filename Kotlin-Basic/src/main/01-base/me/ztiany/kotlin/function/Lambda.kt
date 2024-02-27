@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock
 
 
 /** 高阶函数：高阶函数是将函数用作参数或返回值的函数。 */
-private fun <T> lock(lock: Lock, body: () -> T): T {
+private fun <T> inlineLock(lock: Lock, body: () -> T): T {
     lock.lock()
     try {
         return body.invoke()
@@ -16,10 +16,12 @@ private fun <T> lock(lock: Lock, body: () -> T): T {
 
 private fun testLock() {
     val lock = ReentrantLock()
-    //调用lock
-    lock(lock, { println("abc") })
+
+    //调用 lock
+    inlineLock(lock, { println("abc") })
+
     //在 Kotlin 中有一个约定，如果函数的最后一个参数是一个函数，并且你传递一个 lambda 表达式作为相应的参数，可以在圆括号之外指定它
-    lock(lock) { println("abc") }
+    inlineLock(lock) { println("abc") }
 }
 
 /**
@@ -51,11 +53,11 @@ private fun testMap() {
     }
 }
 
-//可以直接声明Lambda类型
+//可以直接声明 Lambda 类型
 private val toStr: (num: Int) -> String = { it.toString() }
 
 // 函数类型：对于接受另一个函数作为参数的函数，我们必须为该参数指定函数类型。
-// max函数中必须指定less的类型，其类型为(T, T) -> Boolean) 接收两个类型，返回一个Boolean
+// max 函数中必须指定 less 的类型，其类型为 (T, T) -> Boolean) 接收两个类型，返回一个 Boolean
 private fun <T> max(collection: Collection<T>, less: (T, T) -> Boolean): T? {
     var max: T? = null
     for (item in collection) {
@@ -80,8 +82,8 @@ private fun lambdaReturn() {
         val shouldFilter = it > 0
         return@filter shouldFilter
     }
-
 }
+
 
 /**
  * 匿名函数：上面提供的 lambda 表达式语法缺少的一个东西是指定函数的返回类型的能力。在大多数情况下，这是不必要的。
@@ -108,45 +110,53 @@ private fun testClosure() {
     val ints = listOf(1, 2, 3, 4, 5, 6, 7)
     var sum = 0
     ints.filter { it > 0 }
-            .map { it * it }
-            .forEach { sum += it }
+        .map { it * it }
+        .forEach { sum += it }
     print(sum)
 }
 
-//自执行闭包：自执行闭包就是在定义闭包的同时直接执行闭包，一般用于初始化上下文环境。
-fun autoExecute() {
+
+/**
+ * 自执行闭包：自执行闭包就是在定义闭包的同时直接执行闭包，一般用于初始化上下文环境。
+ */
+private fun autoExecuteLamb() {
+    // 这是一个自执行的闭包
     { x: Int, y: Int ->
         println("${x + y}")
     }(1, 3)
+
+    //  但是不推荐使用直接执行闭包，取而代之的应该是 run：
+    run {
+        println("hh")
+    }
 }
 
 
 /**
  * 带接收者的函数字面值：
  *
- *      Kotlin 提供了一种能力, 调用一个函数字面值时, 可以指定一个 接收者对象(receiver object).
- *      在这个函数字面值的函数体内部, 你可以调用接收者对象的方法, 而不必指定任何限定符. 这种能力与扩展函数很类似,
- *      在扩展函数的函数体中, 你也可以访问接收者对象的成员
+ *      Kotlin 提供了一种能力，调用一个函数字面值时，可以指定一个 接收者对象 (receiver object)。
+ *      在这个函数字面值的函数体内部，你可以调用接收者对象的方法, 而不必指定任何限定符. 这种能力与扩展函数很类似，
+ *      在扩展函数的函数体中，你也可以访问接收者对象的成员。
  */
-private fun testExtend() {
-
-    //当接收者类型可以从上下文推断时，lambda 表达式可以用作带接收者的函数字面值。
+private fun lambdaWithParameter() {
+    // 当接收者类型可以从上下文推断时，lambda 表达式可以用作带接收者的函数字面值。
     class HTML {
         fun body() {
 
         }
     }
 
-    //接收者是HTML
+    //接收者是 HTML
     fun html(init: HTML.() -> Unit): HTML {
         val html = HTML()  // 创建接收者对象
         html.init()        // 将该接收者对象传给该 lambda
         return html
     }
-    //此时可以推断出接收者是HTML
+
+    //此时可以推断出接收者是 HTML
     html {
         // 带接收者的 lambda 由此开始
-        body()   // 省略HTML直接调用该接收者对象的一个方法
+        body()   // 省略 HTML 直接调用该接收者对象的一个方法
     }
-
 }

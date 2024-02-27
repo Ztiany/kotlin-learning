@@ -1,4 +1,4 @@
-package core.channels
+package core.channel
 
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.ticker

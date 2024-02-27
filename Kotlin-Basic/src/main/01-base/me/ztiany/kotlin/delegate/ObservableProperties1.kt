@@ -17,7 +17,7 @@ open class PropertyChangeAware {
     }
 }
 
-class Person(val name: String, age: Int, salary: Int) : PropertyChangeAware() {
+  class Person(val name: String, age: Int, salary: Int) : PropertyChangeAware() {
 
     var age: Int = age
         set(newValue) {

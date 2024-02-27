@@ -1,7 +1,7 @@
 package me.ztiany.kotlin.function;
 
 /**
- * @see ReturnUnitKt, Kotlin 核心编程》第二章
+ * @see ReturnUnitKt, 《Kotlin 核心编程》第二章
  */
 public class ReturnVoid {
 
