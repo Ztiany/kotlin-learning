@@ -171,9 +171,9 @@ private fun inlineReturn1() {
 private fun inlineReturn2() {
     //但是如果 lambda 表达式传给的函数是内联的，该 return 也可以内联，所以它是允许的。
     //这种返回（位于 lambda 表达式中，但退出包含它的函数）称为非局部返回。
-    fun hasZeros(ints: List<Int>): Boolean {
+    fun hasZeros(intArr: List<Int>): Boolean {
         //forEach是是一个内联扩展
-        ints.forEach {
+        intArr.forEach {
             if (it == 0) return true // 从 hasZeros 返回
         }
         return false
