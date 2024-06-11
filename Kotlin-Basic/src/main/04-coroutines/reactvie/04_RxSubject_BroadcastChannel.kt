@@ -61,7 +61,7 @@ fun main() = runBlocking<Unit> {
     broadcast.trySend("two").isSuccess
     // now launch a coroutine to print the most recent update
     launch { // use the context of the me.ztiany.tools.main thread for a coroutine
-        broadcast.consumeEach { println(it) }
+        //broadcast.consumeEach { println(it) }
     }
     broadcast.trySend("three").isSuccess
     broadcast.trySend("four").isSuccess
