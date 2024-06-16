@@ -1,6 +1,6 @@
 package practice
 
-import analyse.logCoroutine
+import common.logCoroutine
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow

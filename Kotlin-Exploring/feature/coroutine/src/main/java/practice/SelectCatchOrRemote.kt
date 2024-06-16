@@ -1,10 +1,10 @@
-package analyse
+package practice
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.selects.select
+import common.logCoroutine
 
 /**
- *
  * @author Ztiany
  */
 fun main() = runBlocking {

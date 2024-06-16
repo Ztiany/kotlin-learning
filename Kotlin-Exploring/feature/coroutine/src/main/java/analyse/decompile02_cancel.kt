@@ -1,6 +1,7 @@
 package analyse
 
 import kotlinx.coroutines.*
+import common.logCoroutine
 
 suspend fun main() {
     //sample01()

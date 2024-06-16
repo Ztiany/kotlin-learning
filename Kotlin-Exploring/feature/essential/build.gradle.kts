@@ -3,48 +3,19 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    kotlin("jvm") version "2.0.0"
-
-    // https://kotlinlang.org/docs/all-open-plugin.html
-    //kotlin("plugin.allopen") version "2.0.0"
-
-    // https://kotlinlang.org/docs/no-arg-plugin.html
-    //kotlin("plugin.noarg") version "2.0.0"
-
-    // https://github.com/Kotlin/kotlinx.atomicfu
-    // ?
-
-    // https://kotlinlang.org/docs/serialization.html
-    //kotlin("plugin.serialization") version "2.0.0"
-
-    // https://kotlinlang.org/docs/ksp-quickstart.html
-    //id("com.google.devtools.ksp") version "2.0.0-1.0.21"
+    alias(libs.plugins.plugin.jetbrains.kotlin.jvm)
 }
 
 dependencies{
-    //================================================================================
-    // test
-    //================================================================================
-    testImplementation(kotlin("test"))
+    testImplementation(libs.jetbrains.kotlin.test)
+    testImplementation(libs.kotest.runner.junit5.jvm)
 
-    //================================================================================
-    // Kotlin
-    //================================================================================
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-script-runtime:2.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation(libs.jetbrains.kotlin.stdlib)
+    implementation(libs.jetbrains.kotlin.reflect)
 
-    //================================================================================
-    // bennyhuo
-    //================================================================================
-    // https://github.com/enbandari/ObjectPropertyDelegate
-    implementation ("com.bennyhuo.kotlin:opd:1.0-rc-2")
-    // https://github.com/enbandari/ReleasableVar
-    implementation ("com.bennyhuo.kotlin:releasable-nonnull-vars:1.1.0")
-    // https://github.com/enbandari/KotlinDeepCopy
-    implementation ("com.bennyhuo.kotlin:deepcopy-reflect:1.0")
-    //implementation ("com.bennyhuo.kotlin:deepcopy-annotations:1.1.0")
-    //kapt ("com.bennyhuo.kotlin:deepcopy-compiler:1.1.0")
+    implementation(libs.bennyhuo.opd)
+    implementation(libs.bennyhuo.releasablenonnullvar)
+    implementation(libs.bennyhuo.deepcopy.reflect)
 }
 
 

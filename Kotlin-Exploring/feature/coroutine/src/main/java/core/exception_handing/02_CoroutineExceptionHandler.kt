@@ -1,6 +1,6 @@
 package core.exception_handing
 
-import analyse.logCoroutine
+import common.logCoroutine
 import kotlinx.coroutines.*
 
 /*

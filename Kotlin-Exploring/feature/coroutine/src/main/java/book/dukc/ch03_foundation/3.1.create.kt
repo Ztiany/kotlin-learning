@@ -1,6 +1,6 @@
 package book.dukc.ch03_foundation
 
-import analyse.logCoroutine
+import common.logCoroutine
 import kotlinx.coroutines.delay
 import kotlin.coroutines.*
 

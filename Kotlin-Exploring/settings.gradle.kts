@@ -2,7 +2,17 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
 
-rootProject.name = "Kotlin-Exploring"
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
+        maven { url = uri("https://maven.aliyun.com/repository/apache-snapshots") }
+        maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots") }
+        gradlePluginPortal()
+    }
+}
 
 include(":common:extension")
 
@@ -15,3 +25,5 @@ include(":feature:effective")
 include(":feature:rxkotlin")
 include(":feature:imooc")
 include(":feature:ktmate")
+
+rootProject.name = "Kotlin-Exploring"

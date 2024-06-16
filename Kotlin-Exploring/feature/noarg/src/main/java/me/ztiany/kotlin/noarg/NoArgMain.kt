@@ -1,7 +1,6 @@
 package me.ztiany.kotlin.noarg
 
 import com.google.gson.Gson
-import java.util.*
 
 const val json1 = "{\"age\":20,\"name\":\"ztiany\"}"
 const val json2 = "{\"age\":20}"
@@ -35,7 +34,7 @@ data class DataD(
     val age: Int
 )
 
-fun main(args: Array<String>) {
+fun main() {
     val gson = Gson()
 
     println(gson.fromJson(json1, DataA::class.java))

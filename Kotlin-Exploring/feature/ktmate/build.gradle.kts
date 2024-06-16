@@ -3,33 +3,20 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    kotlin("jvm") version "2.0.0"
+    alias(libs.plugins.plugin.jetbrains.kotlin.jvm)
 }
 
 dependencies{
-    //================================================================================
-    // test
-    //================================================================================
-    testImplementation(kotlin("test"))
+    testImplementation(libs.jetbrains.kotlin.test)
+    testImplementation(libs.kotest.runner.junit5.jvm)
 
-    //================================================================================
-    // Kotlin
-    //================================================================================
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-script-runtime:2.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation(libs.jetbrains.kotlin.stdlib)
+    implementation(libs.jetbrains.kotlin.reflect)
 
-    //================================================================================
-    // Kotlin/JVM: Metadata and Reflection
-    //================================================================================
-    // https://github.com/JetBrains/kotlin/tree/master/libraries/kotlinx-metadata/jvm
-    implementation("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.9.0")
-    // https://square.github.io/kotlinpoet/interop-kotlinx-metadata/
-    implementation("com.squareup:kotlinpoet-metadata:1.17.0")
-    // https://github.com/bennyhuo/kotlinp
-    implementation("com.bennyhuo.kotlin:kotlinp:1.8.10")
+    implementation(libs.jetbrains.kotlinx.metadata.jvm)
+    implementation(libs.squareup.kotlinpoet.metadata)
+    implementation(libs.bennyhuo.kotlinp)
 }
-
 
 tasks.test {
     useJUnitPlatform()

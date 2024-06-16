@@ -2,7 +2,7 @@ package me.ztiany.kotlin.noarg
 
 import java.lang.reflect.Type
 
-inline fun <reified T> Storage.entity(key: String): T? {
+inline fun <reified T> Storage.getEntity(key: String): T? {
     println(object : TypeFlag<T>() {}.type)
     return this.getEntity(key, T::class.java.componentType)
 }
@@ -15,7 +15,7 @@ class AStorage : Storage {
 
 }
 
-fun main(args: Array<String>) {
-    AStorage().entity<List<String>>("A")
-    AStorage().entity<String>("A")
+fun main() {
+    AStorage().getEntity<List<String>>("A")
+    AStorage().getEntity<String>("A")
 }

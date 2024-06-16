@@ -1,4 +1,4 @@
-package analyse
+package common
 
 import java.text.SimpleDateFormat
 import java.util.*

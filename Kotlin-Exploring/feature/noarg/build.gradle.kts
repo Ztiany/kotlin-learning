@@ -3,31 +3,19 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    kotlin("jvm") version "2.0.0"
-
-    // https://kotlinlang.org/docs/no-arg-plugin.html
-    kotlin("plugin.noarg") version "2.0.0"
+    alias(libs.plugins.plugin.jetbrains.kotlin.jvm)
+    alias(libs.plugins.plugin.jetbrains.kotlin.noarg)
 }
 
 dependencies{
-    //================================================================================
-    // test
-    //================================================================================
-    testImplementation(kotlin("test"))
+    testImplementation(libs.jetbrains.kotlin.test)
+    testImplementation(libs.kotest.runner.junit5.jvm)
 
-    //================================================================================
-    // Kotlin
-    //================================================================================
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-script-runtime:2.0.0")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation(libs.jetbrains.kotlin.stdlib)
+    implementation(libs.jetbrains.kotlin.reflect)
 
-    //================================================================================
-    // json
-    //================================================================================
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation(libs.google.gson)
 }
-
 
 tasks.test {
     useJUnitPlatform()

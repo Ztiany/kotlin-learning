@@ -1,6 +1,6 @@
 package book.dukc.ch06_core
 
-import analyse.logCoroutine
+import common.logCoroutine
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.collect

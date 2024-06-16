@@ -1,6 +1,6 @@
 package core.flow
 
-import analyse.logCoroutine
+import common.logCoroutine
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
