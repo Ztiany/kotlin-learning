@@ -37,8 +37,6 @@ dependencies{
     //================================================================================
     // bennyhuo
     //================================================================================
-    // https://github.com/enbandari/KotlinTuples
-    //implementation ("com.bennyhuo.kotlin:kotlin-tuples:2.0")
     // https://github.com/enbandari/ObjectPropertyDelegate
     implementation ("com.bennyhuo.kotlin:opd:1.0-rc-2")
     // https://github.com/enbandari/ReleasableVar
