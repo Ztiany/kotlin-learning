@@ -43,7 +43,7 @@ private val searchCondition = MutableSharedFlow<Int>()
 @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
 private fun subscribeUser() = searchCondition
     .debounce(300)
-    .flatMapMerge { id ->
+    .flatMapMerge(1) { id ->
         loadUser(id)
     }.runningFold(State<User>(isLoading = true)) { accumulator, value ->
         println("do accumulation: $accumulator, $value")
@@ -54,21 +54,18 @@ private fun subscribeUser() = searchCondition
 
 private fun loadUser(userId: Int): Flow<State<User>> {
     println("loading user $userId")
-    return callbackFlow {
-        send(State(isLoading = true))
+    return flow {
+        emit(State(isLoading = true))
         val user = withContext(Dispatchers.IO) {
             delay(1000)
             User(userId, "Ztiany")
         }
         if (Random.nextBoolean()) {
             println("successfully loaded user $userId")
-            send(State(isLoading = false, value = user))
+            emit(State(isLoading = false, value = user))
         } else {
             println("failed to load user $userId")
-            send(State(isLoading = false, error = IOException("Can't load user: ${Date().toLocaleString()}")))
-        }
-        awaitClose {
-            println("closed")
+            emit(State(isLoading = false, error = IOException("Can't load user: ${Date().toLocaleString()}")))
         }
     }
 }
