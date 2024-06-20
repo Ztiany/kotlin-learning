@@ -11,9 +11,11 @@ dependencies{
     testImplementation(libs.kotest.runner.junit5.jvm)
 
     implementation(libs.jetbrains.kotlin.stdlib)
-    
+
     implementation(libs.jetbrains.kotlin.reflect)
     implementation(libs.jetbrains.kotlinx.coroutines.core)
+
+    implementation(libs.google.gson)
 }
 
 

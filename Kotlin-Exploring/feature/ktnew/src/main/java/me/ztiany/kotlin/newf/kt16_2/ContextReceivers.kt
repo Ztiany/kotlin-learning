@@ -1,5 +1,6 @@
 package me.ztiany.kotlin.newf.kt16_2
 
+import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 
@@ -44,6 +45,18 @@ fun json(build: JsonObject.() -> Unit) = run {
 
 context(JsonObject) infix fun String.by(build: JsonObject.() -> Unit) {
     add(this, JsonObject().apply { build() })
+}
+
+context(JsonObject) infix fun String.byArray(build: JsonArray.() -> Unit) {
+    add(this, JsonArray().apply { build() })
+}
+
+fun JsonArray.addArray(build: JsonArray.() -> Unit) {
+    add(JsonArray().apply { build() })
+}
+
+fun JsonArray.add(build: JsonObject.() -> Unit) {
+    add(JsonObject().apply { build() })
 }
 
 context(JsonObject) infix fun String.by(value: Any) {
@@ -115,6 +128,20 @@ fun main() {
         "creator" by {
             "name" by "JetBrains"
             "age" by "21"
+        }
+        "attribute" byArray {
+            add("1")
+            add("2")
+            add("3")
+            add {
+                "a" by "A"
+                "b" by 10
+            }
+            addArray {
+                add("4")
+                add("5")
+                add("6")
+            }
         }
     }
 
