@@ -1,16 +1,16 @@
-package me.ztiany.extenstions.arrow.typederror.demo
+package me.ztiany.kotlin.arrow.typederror.demo
 
 import java.time.LocalDate
 
 class SealedClassEarlyReturnPetService(
-  private val microchipStore: MicrochipStore,
-  private val petStore: PetStore,
-  private val petOwnerStore: PetOwnerStore
+    private val microchipStore: MicrochipStore,
+    private val petStore: PetStore,
+    private val petOwnerStore: PetOwnerStore
 ) {
   suspend fun updatePetDetails(
-    petId: PetId,
-    petOwnerId: PetOwnerId,
-    petUpdate: PetUpdate
+      petId: PetId,
+      petOwnerId: PetOwnerId,
+      petUpdate: PetUpdate
   ): UpdatePetDetailsResult {
     val pet = petStore.getPet(petId) ?: return UpdatePetDetailsResult.PetNotFound
     val owner = petOwnerStore.getPetOwner(petOwnerId) ?: return UpdatePetDetailsResult.OwnerNotFound
@@ -70,12 +70,12 @@ class SealedClassEarlyReturnPetService(
   }
 
   data class PetUpdate(
-    val microchipId: MicrochipId? = null,
-    val name: String? = null,
-    val birthDate: LocalDate? = null,
-    val petType: PetType? = null,
-    val breed: String? = null,
-    val gender: PetGender? = null
+      val microchipId: MicrochipId? = null,
+      val name: String? = null,
+      val birthDate: LocalDate? = null,
+      val petType: PetType? = null,
+      val breed: String? = null,
+      val gender: PetGender? = null
   )
 
   sealed class UpdatePetResult {

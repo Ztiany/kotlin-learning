@@ -1,4 +1,4 @@
-package me.ztiany.extenstions.arrow.typederror
+package me.ztiany.kotlin.arrow.typederror
 
 import arrow.core.Either
 import arrow.core.left

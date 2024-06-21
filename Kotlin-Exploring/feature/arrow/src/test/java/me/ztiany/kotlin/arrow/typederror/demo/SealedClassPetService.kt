@@ -1,34 +1,34 @@
-package me.ztiany.extenstions.arrow.typederror.demo
+package me.ztiany.kotlin.arrow.typederror.demo
 
 import java.time.LocalDate
 
 class SealedClassPetService(
-  private val microchipStore: MicrochipStore,
-  private val petStore: PetStore,
-  private val petOwnerStore: PetOwnerStore
+    private val microchipStore: MicrochipStore,
+    private val petStore: PetStore,
+    private val petOwnerStore: PetOwnerStore
 ) {
   suspend fun updatePetDetails(
-    petId: PetId,
-    petOwnerId: PetOwnerId,
-    petUpdate: PetUpdate
+      petId: PetId,
+      petOwnerId: PetOwnerId,
+      petUpdate: PetUpdate
   ): UpdatePetDetailsResult {
     val pet = petStore.getPet(petId)
     return if (pet == null) {
-      UpdatePetDetailsResult.PetNotFound
+        UpdatePetDetailsResult.PetNotFound
     } else {
       val owner = petOwnerStore.getPetOwner(petOwnerId)
       if (owner == null) {
-        UpdatePetDetailsResult.OwnerNotFound
+          UpdatePetDetailsResult.OwnerNotFound
       } else {
         val microchip = microchipStore.getMicrochip(pet.microchipId)
         if (microchip == null) {
-          UpdatePetDetailsResult.MicrochipNotFound
+            UpdatePetDetailsResult.MicrochipNotFound
         } else {
           if (microchip.petId != pet.id) {
-            UpdatePetDetailsResult.InvalidMicrochip
+              UpdatePetDetailsResult.InvalidMicrochip
           } else {
             if (microchip.petOwnerId != owner.id) {
-              UpdatePetDetailsResult.OwnerMismatch
+                UpdatePetDetailsResult.OwnerMismatch
             } else {
               val checkNamePolicyResult = petUpdate.name
                 ?.let { checkNamePolicy(it) }
@@ -81,12 +81,12 @@ class SealedClassPetService(
   }
 
   data class PetUpdate(
-    val microchipId: MicrochipId? = null,
-    val name: String? = null,
-    val birthDate: LocalDate? = null,
-    val petType: PetType? = null,
-    val breed: String? = null,
-    val gender: PetGender? = null
+      val microchipId: MicrochipId? = null,
+      val name: String? = null,
+      val birthDate: LocalDate? = null,
+      val petType: PetType? = null,
+      val breed: String? = null,
+      val gender: PetGender? = null
   )
 
   sealed class UpdatePetResult {

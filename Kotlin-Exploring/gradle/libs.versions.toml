@@ -81,10 +81,6 @@ bennyhuo-deepcopy-kapt = { module = "com.bennyhuo.kotlin:deepcopy-compiler", ver
 # https://arrow-kt.io/
 arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 arrow-syntax = { module = "io.arrow-kt:arrow-syntax", version.ref = "arrow" }
-arrow-optics- = { module = "io.arrow-kt:arrow-optics", version.ref = "arrow" }
-arrow-optics-ksp = { module = "io.arrow-kt:arrow-optics-ksp-plugin", version.ref = "arrow" }
-arrow-meta-kapt = { module = "io.arrow-kt:arrow-meta", version.ref = "arrow" }
-arrow-fx-coroutines- = { module = "io.arrow-kt:arrow-fx-coroutines", version.ref = "arrow" }
 
 # ========================
 # mapstruct

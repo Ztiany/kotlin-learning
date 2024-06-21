@@ -1,9 +1,9 @@
-package me.ztiany.extenstions.arrow.typederror.demo
+package me.ztiany.kotlin.arrow.typederror.demo
 
 import arrow.core.raise.either
 import arrow.core.raise.ensure
-import arrow.core.raise.recover
 import arrow.core.Either
+import arrow.core.raise.recover
 import java.time.LocalDate
 
 class TaggedTypesPetService(

@@ -1,4 +1,4 @@
-package me.ztiany.extenstions.arrow.typederror.demo
+package me.ztiany.kotlin.arrow.typederror.demo
 
 import arrow.core.raise.Raise
 import arrow.core.raise.ensure

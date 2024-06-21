@@ -1,4 +1,4 @@
-package me.ztiany.extenstions.arrow.typederror.demo
+package me.ztiany.kotlin.arrow.typederror.demo
 
 import arrow.core.Either
 import arrow.core.Option
@@ -10,14 +10,14 @@ import arrow.core.right
 import java.time.LocalDate
 
 class TaggedTypesFlatMapPetService(
-  private val microchipStore: MicrochipStore,
-  private val petStore: PetStore,
-  private val petOwnerStore: PetOwnerStore
+    private val microchipStore: MicrochipStore,
+    private val petStore: PetStore,
+    private val petOwnerStore: PetOwnerStore
 ) {
   suspend fun updatePetDetails(
-    petId: PetId,
-    petOwnerId: PetOwnerId,
-    petUpdate: PetUpdate
+      petId: PetId,
+      petOwnerId: PetOwnerId,
+      petUpdate: PetUpdate
   ): Either<UpdatePetDetailsFailure, Pet> =
     petStore.getPet(petId)
       .toEither { UpdatePetDetailsFailure.PetNotFound }
@@ -60,12 +60,12 @@ class TaggedTypesFlatMapPetService(
   }
 
   data class PetUpdate(
-    val microchipId: Option<MicrochipId> = none(),
-    val name: Option<String> = none(),
-    val birthDate: Option<LocalDate> = none(),
-    val petType: Option<PetType> = none(),
-    val breed: Option<String> = none(),
-    val gender: Option<PetGender> = none()
+      val microchipId: Option<MicrochipId> = none(),
+      val name: Option<String> = none(),
+      val birthDate: Option<LocalDate> = none(),
+      val petType: Option<PetType> = none(),
+      val breed: Option<String> = none(),
+      val gender: Option<PetGender> = none()
   )
 
   sealed class UpdatePetFailure {

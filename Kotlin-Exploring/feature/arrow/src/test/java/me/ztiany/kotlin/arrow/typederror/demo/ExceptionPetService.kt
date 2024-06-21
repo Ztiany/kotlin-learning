@@ -1,17 +1,17 @@
-package me.ztiany.extenstions.arrow.typederror.demo
+package me.ztiany.kotlin.arrow.typederror.demo
 
 import java.time.LocalDate
 
 class ExceptionPetService(
-  private val microchipStore: MicrochipStore,
-  private val petStore: PetStore,
-  private val petOwnerStore: PetOwnerStore
+    private val microchipStore: MicrochipStore,
+    private val petStore: PetStore,
+    private val petOwnerStore: PetOwnerStore
 ) {
 
   suspend fun updatePetDetails(
-    petId: PetId,
-    petOwnerId: PetOwnerId,
-    petUpdate: PetUpdate
+      petId: PetId,
+      petOwnerId: PetOwnerId,
+      petUpdate: PetUpdate
   ): Pet = try {
     val pet = petStore.getPet(petId)
     val owner = petOwnerStore.getPetOwner(petOwnerId)
@@ -65,12 +65,12 @@ class ExceptionPetService(
   }
 
   data class PetUpdate(
-    val microchipId: MicrochipId? = null,
-    val name: String? = null,
-    val birthDate: LocalDate? = null,
-    val petType: PetType? = null,
-    val breed: String? = null,
-    val gender: PetGender? = null
+      val microchipId: MicrochipId? = null,
+      val name: String? = null,
+      val birthDate: LocalDate? = null,
+      val petType: PetType? = null,
+      val breed: String? = null,
+      val gender: PetGender? = null
   )
 
   data class PetNotFoundException(override val cause: Throwable? = null) : RuntimeException()

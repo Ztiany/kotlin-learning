@@ -27,6 +27,9 @@ dependencies {
     implementation(libs.squareup.okhttp3.interceptor.log)
     implementation(libs.google.gson)
 
+    implementation(libs.arrow.core)
+    implementation(libs.arrow.syntax)
+
     implementation(libs.bennyhuo.android.handler)
 }
 
