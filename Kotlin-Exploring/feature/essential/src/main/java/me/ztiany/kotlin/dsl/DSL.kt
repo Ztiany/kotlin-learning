@@ -1,21 +1,23 @@
 package me.ztiany.kotlin.dsl
 
 /**
- * DSL
+ * DSL：领域特定语言，用于针对某一个领域而构建的语言，比如 SQL 和 正则表达式。DSL 可以分为`外部 DSL` 和 `内部 DSL`。
+ *      Kotlin DSL 构建，Kotlin 的 DSL 是完全静态的
  *
- * 领域特定语言，用于针对某一个领域而构建的语言，比如 SQL 和 正则表达式。DSL 可以分为`外部 DSL` 和 `内部 DSL`。
+ * DSL 构建用到的关键特性：
  *
- * Kotlin  DSL 构建，Kotlin 的 DSL 是完全静态的
+ * -  带接收者的函数字面
+ * -  中缀表达
+ * -  函数扩展
+ * -  invoke 约定
+ * -  gradle + kotlin
  *
- *      DSL 构建用到的关键特性：
+ * 参考：
  *
- *          -  带接收者的函数字面
- *          -  中缀表达
- *          -  函数扩展
- *          -  invoke 约定
- *          -  gradle + kotlin
+ *   - [Kotlin DSL | Official Doc](https://kotlinlang.org/docs/type-safe-builders.html)
+ *   - [Kotlin DSL | Introduction](https://medium.com/kotlin-and-kotlin-for-android/kotlin-dsl-introduction-6123c43ae770)
  *
- * */
+ */
 open class Tag(val name: String) {
 
     private val children = mutableListOf<Tag>()
@@ -41,12 +43,12 @@ class TR : Tag("tr") {
 class TD : Tag("td")
 
 fun createTable() =
-        table {
-            tr {
-                td {
-                }
+    table {
+        tr {
+            td {
             }
         }
+    }
 
 fun createAnotherTable() = table {
     for (i in 1..2) {
