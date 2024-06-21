@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
     alias(libs.plugins.plugin.jetbrains.kotlin.jvm)
+    alias(libs.plugins.plugin.google.kotlin.ksp2)
 }
 
 dependencies {
@@ -28,7 +29,9 @@ dependencies {
     implementation(libs.google.gson)
 
     implementation(libs.arrow.core)
-    implementation(libs.arrow.syntax)
+    implementation(libs.arrow.fx.coroutines)
+    implementation(libs.arrow.optics.core)
+    //ksp(libs.arrow.optics.ksp) // not support ksp 2.0
 
     implementation(libs.bennyhuo.android.handler)
 }

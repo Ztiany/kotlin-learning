@@ -1,7 +1,8 @@
 package me.ztiany.kotlin.arrow.basic
 
-import arrow.core.Either
-import arrow.core.Option
+import arrow.core.*
+import java.io.File
+import java.io.FileWriter
 import kotlin.test.Test
 
 /**
@@ -42,6 +43,9 @@ class TypesInArrow {
 
     /**
      * The Validated type is used to represent a value that can be either valid or invalid. It is often used for input validation and error handling.
+     *
+     * Validated<out E, out A>' is deprecated. Validated functionality is being merged into Either.
+     * You can find more details about how to migrate on the Github release page, or the 1.2.0 release post.
      *
      * check out [Validation](https://arrow-kt.io/learn/typed-errors/validation/)
      */
