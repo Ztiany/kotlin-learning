@@ -2,7 +2,6 @@ package practice
 
 import common.State
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
 import java.io.IOException
 import java.util.Date
@@ -17,6 +16,19 @@ import kotlin.random.Random
  * 感谢：[Get current and previous value in flow's collect](https://stackoverflow.com/questions/72626286/get-current-and-previous-value-in-flows-collect)。
  */
 suspend fun main() {
+    byRunningFold()
+    byScan()
+}
+
+private fun byScan() {
+
+}
+
+private data class User(val id: Int, val name: String)
+
+private val searchCondition = MutableSharedFlow<Int>()
+
+private suspend fun byRunningFold() {
     coroutineScope {
         launch {
             subscribeUser()
@@ -35,10 +47,6 @@ suspend fun main() {
         }
     }
 }
-
-private data class User(val id: Int, val name: String)
-
-private val searchCondition = MutableSharedFlow<Int>()
 
 @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
 private fun subscribeUser() = searchCondition
