@@ -12,7 +12,7 @@ Kotlin 协程以包括以下模块
 
 ---
 
-## 1 示例代码分包说明
+## 1 示例代码说明
 
 官方模块：
 
@@ -26,6 +26,7 @@ Kotlin 协程以包括以下模块
 - retrofit：kotlin 协程与 retrofit 配合示例代码
 - analyse： [破解 kotlin 协程系列 ](https://juejin.im/post/5ceb423451882533441ece67) 学习代码
 - book.dukc：《深入理解 Kotlin 协程》学习代码
+- practice：协程实践
 
 ---
 
@@ -85,7 +86,7 @@ Kotlin 协程以包括以下模块
 
 ### 选择表达式（core.select）
 
-- 选择表达式(还不是很理解)
+- 选择表达式
 
 ---
 

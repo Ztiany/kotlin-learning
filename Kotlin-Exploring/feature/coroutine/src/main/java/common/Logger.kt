@@ -13,3 +13,13 @@ private val now = {
 }
 
 fun logCoroutine(msg: Any?) = println("${now()} [${Thread.currentThread().name}] $msg")
+
+fun String.printAligned(targetLength: Int = 50, paddingChar: Char = '=') {
+    val paddingLength = targetLength - this.length
+    if (paddingLength <= 0) {
+        println(this)
+    } else {
+        val padding = paddingChar.toString().repeat(paddingLength)
+        println("$this $padding")
+    }
+}
