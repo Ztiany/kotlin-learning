@@ -1,6 +1,6 @@
 package me.ztiany.kotlin.extension
 
-sealed class BooleanExt<out T> constructor(val boolean: Boolean)
+sealed class BooleanExt<out T>(val boolean: Boolean)
 
 data object Otherwise : BooleanExt<Nothing>(true)
 

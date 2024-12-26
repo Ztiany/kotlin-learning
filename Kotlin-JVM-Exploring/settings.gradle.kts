@@ -26,4 +26,4 @@ include(":feature:rxkotlin")
 include(":feature:imooc")
 include(":feature:ktmate")
 
-rootProject.name = "Kotlin-Exploring"
+rootProject.name = "Kotlin-JVM-Exploring"
