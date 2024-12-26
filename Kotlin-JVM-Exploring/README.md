@@ -1,4 +1,4 @@
-# Kotlin 学习与探索
+# Learning and Exploring Kotlin On JVM Platform
 
 **学习资料**：
 
