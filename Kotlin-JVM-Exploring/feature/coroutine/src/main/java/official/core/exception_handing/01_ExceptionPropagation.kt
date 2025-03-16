@@ -20,15 +20,17 @@ fun main() = runBlocking {
         delay(2000)
         println("Throwing exception from launch")
         //Kotlin 将自动在控制台打印抛出的异常
-        throw IndexOutOfBoundsException() // Will be printed to the console by Thread.defaultUncaughtExceptionHandler
+        throw CancellationException() // Will be printed to the console by Thread.defaultUncaughtExceptionHandler
     }
 
+   //  delay(2800)
     try {
         //launch 的异常不会被处理
         job.join()
         println(message = "after joining")
     } catch (e: Exception) {
-        //不会走这里，不会有打印。
+        // 不会走这里，不会有打印。【join 就是为了等待对应的协程完成，而不关心它是否产生了异常，所以这里不会有异常捕获】
+        //  对比 java/explore/analyse/exception_handling_join.kt。
         println(message = "catch $e of launch")
         e.printStackTrace()
     }

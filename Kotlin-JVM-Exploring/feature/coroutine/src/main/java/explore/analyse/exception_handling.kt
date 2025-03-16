@@ -12,10 +12,10 @@ fun main() = runBlocking {
 //    demo4()
 //    demo5()
 //    demo6()
-//    demo7()
+    demo7()
 //    demo8()
 //    demo9_1(this)
-    demo9_2()
+//    demo9_2()
 }
 
 private suspend fun demo9_1(scope: CoroutineScope) {
@@ -91,28 +91,33 @@ private suspend fun demo8() {
 
 //https://juejin.cn/post/6844903854245429255
 private suspend fun demo7() {
-    val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-        logCoroutine("${coroutineContext[CoroutineName]} $throwable")
+    val exceptionHandlerA = CoroutineExceptionHandler { coroutineContext, throwable ->
+        logCoroutine("exceptionHandlerA-${coroutineContext[CoroutineName]} $throwable")
+    }
+    val exceptionHandlerB = CoroutineExceptionHandler { coroutineContext, throwable ->
+        logCoroutine("exceptionHandlerB-${coroutineContext[CoroutineName]} $throwable")
     }
 
     logCoroutine(1)
     try {
         supervisorScope { //①
-//        coroutineScope { //①
+        //coroutineScope { //①
             logCoroutine(2)
 
-            launch(exceptionHandler + CoroutineName("②")) { // ②
+            launch(exceptionHandlerA + CoroutineName("②")) { // ②
                 logCoroutine(3)
 
-                //对于 supervisorScope 的子协程 （例如 ②）的子协程（例如 ③），如果没有明确指出，它是遵循默认的作用于规则的，也就是 coroutineScope 的规则了，
-                // 出现未捕获的异常会尝试传递给父协程并尝试取消父协程。所以这里的异常，由 ② 处设置的 exceptionHandler 处理。
-                launch(exceptionHandler + CoroutineName("③")) { // ③
+                // 对于 supervisorScope 的子协程 （例如 ②）的子协程（例如 ③），如果没有明确指出，它是遵循默认的作用域规则的，也就是 coroutineScope 的规则了，
+                // 出现未捕获的异常会尝试传递给父协程并尝试取消父协程。所以这里的异常，由 ② 处设置的 exceptionHandler 处理。【supervisorScope 不关心子协程的异常】
+                launch(exceptionHandlerB + CoroutineName("③")) { // ③ 【exceptionHandlerB 不起作用，因为此处的协程有父协程。】
                     logCoroutine(4)
                     delay(100)
                     throw ArithmeticException("Hey!!")
                 }
 
-                logCoroutine(5)
+                logCoroutine("5.1")
+                delay(200)
+                logCoroutine("5.2")
             }
 
             logCoroutine(6)
@@ -134,8 +139,8 @@ private suspend fun demo7() {
 
         logCoroutine(11)
     } catch (e: Exception) {
-        //这个是我们对 coroutineScope 整体的一个捕获，如果 coroutineScope 内部以为异常而结束，那么我们是可以对它直接 try ... catch ... 来捕获这个异常的，
-        // 这再一次表明协程把异步的异常处理到同步代码逻辑当中。
+        // 这个是我们对 coroutineScope 整体的一个捕获，如果 coroutineScope 内部以为异常而结束，那么我们是可以对它直接 try ... catch ... 来捕获这个异常的，
+        // 这再一次表明协程把异步的异常处理放到同步代码逻辑当中。
         logCoroutine("12. $e")
     }
 
