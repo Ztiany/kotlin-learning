@@ -30,7 +30,28 @@ private class CompanionClass2 {
     }
 }
 
-private fun testCompanion() {
+private fun testCompanion1() {
     CompanionClass1.x
     CompanionClass2.create()
+}
+
+/**
+ * companion object 的另一种特性：通过外部类型名引用内部的伴生对象。
+ * 参考 Kotlin Coroutine 中的 CoroutineContext 设计。
+ */
+private interface Element : Context {
+    interface FakeKey<E : Element>
+}
+
+private interface Job : Element {
+    companion object Key : Element.FakeKey<Job>
+}
+
+private interface Context {
+    operator fun <E : Element> get(key: Element.FakeKey<E>): E?
+}
+
+private fun testCompanion2(context: Context) {
+    // Job 这里指向的是其内部的伴生对象 Key。
+    val job = context[Job]
 }
