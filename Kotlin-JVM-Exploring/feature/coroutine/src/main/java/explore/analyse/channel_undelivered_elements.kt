@@ -2,6 +2,7 @@ package explore.analyse
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.Channel.Factory.CONFLATED
 import kotlinx.coroutines.channels.consume
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.flow.consumeAsFlow
@@ -11,8 +12,8 @@ import kotlinx.coroutines.flow.receiveAsFlow
 private val scope = CoroutineScope(SupervisorJob())
 
 suspend fun main() {
-    //sample1()
-    explore.analyse.sample2()
+    //  sample1()
+     sample2()
     //sample3()
 }
 
@@ -21,7 +22,7 @@ private suspend fun sample1() {
         println("There is a undelivered Element: $it")
     }
 
-    explore.analyse.scope.launch {
+    scope.launch {
         for (i in 1..10) {
             println("send: $i")
             channel.send(i.toString())
@@ -29,7 +30,7 @@ private suspend fun sample1() {
         }
     }
 
-    explore.analyse.scope.launch {
+    scope.launch {
         for (s in channel) {
             delay(100)
             println("receive: $s")
@@ -47,7 +48,7 @@ private suspend fun sample2() {
         println("Find a undeliveredElement: $it")
     }
 
-    explore.analyse.scope.launch {
+    scope.launch {
         for (i in 1..10) {
             println("send: $i")
             channel.send(i.toString())
@@ -59,13 +60,12 @@ private suspend fun sample2() {
     println("1----------------------------------------------------------------------------")
     delay(5000)
 
-    val subscriberJob1 = explore.analyse.scope.launch {
+    val subscriberJob1 = scope.launch {
         flow.onEach {
             delay(200)
+        }.collect {
+            println("1-collect: $it")
         }
-            .collect {
-                println("1-collect: $it")
-            }
     }
 
     delay(500)
@@ -73,13 +73,12 @@ private suspend fun sample2() {
     println("2----------------------------------------------------------------------------")
 
     delay(5000)
-    val subscriberJob2 = explore.analyse.scope.launch {
+    val subscriberJob2 = scope.launch {
         flow.onEach {
             delay(200)
+        }.collect {
+            println("2-collect: $it")
         }
-            .collect {
-                println("2-collect: $it")
-            }
     }
 
     println("3----------------------------------------------------------------------------")
@@ -103,7 +102,7 @@ private suspend fun sample3() {
         println("There is  a undeliveredElement: $it")
     }
 
-    explore.analyse.scope.launch {
+    scope.launch {
         for (i in 1..10) {
             println("send: $i")
             channel.send(i.toString())
@@ -113,13 +112,12 @@ private suspend fun sample3() {
 
     val flow = channel.consumeAsFlow()
 
-    val subscriberJob = explore.analyse.scope.launch {
+    val subscriberJob = scope.launch {
         flow.onEach {
             delay(200)
+        }.collect {
+            println("1-collect: $it")
         }
-            .collect {
-                println("1-collect: $it")
-            }
     }
 
     delay(500)
