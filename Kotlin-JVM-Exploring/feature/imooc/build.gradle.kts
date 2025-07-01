@@ -26,13 +26,13 @@ kotlin {
 
 tasks.named<KotlinJvmCompile>("compileKotlin") {
     compilerOptions {
-        freeCompilerArgs.add("-Xcontext-receivers")
+        freeCompilerArgs.addAll("-Xcontext-receivers", "-Xcontext-parameters")
     }
 }
 
 tasks.named<KotlinJvmCompile>("compileTestKotlin") {
     compilerOptions {
-        freeCompilerArgs.add("-Xcontext-receivers")
+        freeCompilerArgs.addAll("-Xcontext-receivers", "-Xcontext-parameters")
     }
 }
 
