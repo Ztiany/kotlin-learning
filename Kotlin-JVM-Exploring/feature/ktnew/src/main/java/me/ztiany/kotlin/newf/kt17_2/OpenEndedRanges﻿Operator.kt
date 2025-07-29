@@ -1,8 +1,8 @@
 package me.ztiany.kotlin.newf.kt17_2
 
-
 /**
- * Our research shows that this new operator does a better job at expressing open-ended ranges and making it clear that the upper bound is not included.
+ * Our research shows that this new operator does a better job at expressing open-ended ranges and
+ * making it clear that the upper bound is not included.
  *
  * Here is an example of using the [..<] operator in a when expression:
  */

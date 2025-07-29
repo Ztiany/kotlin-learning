@@ -1,7 +1,8 @@
 package me.ztiany.kotlin.newf.kt17
 
 /**
- * Kotlin 1.7.0 introduces an underscore operator, _, for type arguments. You can use it to automatically infer a type argument when other types are specified:
+ * Kotlin 1.7.0 introduces an underscore operator, _, for type arguments. You can use it to
+ * automatically infer a type argument when other types are specified:
  */
 fun main() {
     // T is inferred as String because SomeImplementation derives from SomeClass<String>

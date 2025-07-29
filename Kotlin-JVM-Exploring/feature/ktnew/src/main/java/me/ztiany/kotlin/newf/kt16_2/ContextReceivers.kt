@@ -5,12 +5,17 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 
 /*
-ContextReceivers Feature：
+ContextReceivers Feature.
 
-- https://www.youtube.com/watch?v=GISPalIVdQY
+Official Docs:
+
 - https://kotlinlang.org/docs/whatsnew1620.html#prototype-of-context-receivers-for-kotlin-jvm
-- https://nomisrev.github.io/context-receivers/
+- https://www.youtube.com/watch?v=GISPalIVdQY
+
+Community Blogs:
+
 - https://kt.academy/article/fk-context-receivers
+- https://nomisrev.github.io/context-receivers/
 - https://blog.rockthejvm.com/kotlin-context-receivers/
  */
 
