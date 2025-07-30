@@ -1,4 +1,4 @@
-package me.ztiany.kotlin.newf.kt18_2
+package me.ztiany.kotlin.newf.kt18_2.language
 
 @JvmInline
 private value class Person(private val fullName: String) {

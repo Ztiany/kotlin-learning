@@ -1,4 +1,4 @@
-package me.ztiany.kotlin.newf.kt18_2
+package me.ztiany.kotlin.newf.kt18_2.stdlib
 
 private interface XMLWriter : AutoCloseable {
     fun document(encoding: String, version: String, content: XMLWriter.() -> Unit)

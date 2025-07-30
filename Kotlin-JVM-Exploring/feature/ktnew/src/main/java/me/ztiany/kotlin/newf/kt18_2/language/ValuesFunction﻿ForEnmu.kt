@@ -1,4 +1,4 @@
-package me.ztiany.kotlin.newf.kt18_2
+package me.ztiany.kotlin.newf.kt18_2.language
 
 private enum class Color(val colorName: String, val rgb: String) {
     RED("Red", "#FF0000"),

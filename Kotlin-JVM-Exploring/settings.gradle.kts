@@ -1,3 +1,17 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
+        maven { url = uri("https://maven.aliyun.com/repository/apache-snapshots") }
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+// https://plugins.gradle.org/plugin/org.gradle.toolchains.foojay-resolver-convention
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
