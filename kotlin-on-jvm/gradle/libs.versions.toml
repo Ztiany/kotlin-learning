@@ -1,0 +1,118 @@
+# search from <https://plugins.gradle.org/search>
+# inspired from <https://github.com/avwie/kotlinx/blob/main/gradle/libs.versions.toml>
+[versions]
+jetbrains-kotlin = "2.2.0"
+jetbrains-kotlinx-coroutine = "1.9.0"
+
+squareup-retrofit2 = "2.11.0"
+squareup-okhttp3 = "4.12.0"
+
+arrow = "1.2.4"
+arrow2 = "2.0.0-alpha.3"
+
+[libraries]
+# ========================
+# Kotlin core
+# ========================
+jetbrains-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "jetbrains-kotlin" }
+jetbrains-kotlin-script = { module = "org.jetbrains.kotlin:kotlin-script-runtime", version.ref = "jetbrains-kotlin" }
+jetbrains-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "jetbrains-kotlin" }
+jetbrains-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "jetbrains-kotlin" }
+
+# ========================
+# Kotlin coroutines
+# ========================
+jetbrains-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "jetbrains-kotlinx-coroutine" }
+jetbrains-kotlinx-coroutines-rx2 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx2", version.ref = "jetbrains-kotlinx-coroutine" }
+
+# ========================
+# Kotlin tools
+# ========================
+# https://github.com/Kotlin/kotlinx.serialization
+jetbrains-kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version = "1.7.0" }
+#https://github.com/Kotlin/kotlinx.atomicfu
+jetbrains-kotlinx-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version = "0.24.0" }
+
+# ========================
+# Kotlin mate
+# ========================
+#  https://github.com/JetBrains/kotlin/tree/master/libraries/kotlinx-metadata/jvm
+jetbrains-kotlinx-metadata-jvm = { module = "org.jetbrains.kotlinx:kotlinx-metadata-jvm", version = "0.9.0" }
+# https://square.github.io/kotlinpoet/interop-kotlinx-metadata/
+squareup-kotlinpoet-metadata = { module = "com.squareup:kotlinpoet-metadata", version = "1.17.0" }
+# https://github.com/bennyhuo/kotlinp
+bennyhuo-kotlinp = { module = "com.bennyhuo.kotlin:kotlinp", version = "1.8.10" }
+
+# ========================
+# rxjava
+# ========================
+reactivex-rxkotlin2 = { module = "io.reactivex.rxjava2:rxkotlin", version = "2.4.0" }
+reactivex-rxjava2 = { module = "io.reactivex.rxjava2:rxjava", version = "2.2.21" }
+
+# ========================
+# network
+# ========================
+# https://github.com/square/retrofit
+squareup-retrofit2-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "squareup-retrofit2" }
+squareup-retrofit2-mock = { module = "com.squareup.retrofit2:retrofit-mock", version.ref = "squareup-retrofit2" }
+squareup-retrofit2-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "squareup-retrofit2" }
+squareup-retrofit2-adapter-rxjava2 = { module = "com.squareup.retrofit2:adapter-rxjava2", version.ref = "squareup-retrofit2" }
+# https://github.com/JakeWharton/retrofit2-kotlin-coroutines-adapter
+jakewharton-retrofit2-adapter-coroutine = { module = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter", version = "0.9.2" }
+# https://github.com/square/okhttp
+squareup-okhttp3-core = { module = "com.squareup.okhttp3:okhttp", version.ref = "squareup-okhttp3" }
+squareup-okhttp3-mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "squareup-okhttp3" }
+squareup-okhttp3-interceptor-log = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "squareup-okhttp3" }
+google-gson = { module = "com.google.code.gson:gson", version = "2.10.1" }
+
+# ========================
+# bennyhuo
+# ========================
+bennyhuo-android-handler = { module = "com.bennyhuo:portable-android-handler", version = "1.0" }
+# https://github.com/enbandari/ReleasableVar
+bennyhuo-releasablenonnullvar = { module = "com.bennyhuo.kotlin:releasable-nonnull-vars", version = "1.1.0" }
+#  https://github.com/enbandari/ObjectPropertyDelegate
+bennyhuo-opd = { module = "com.bennyhuo.kotlin:opd", version = "1.0-rc-2" }
+# https://github.com/enbandari/KotlinDeepCopy
+bennyhuo-deepcopy-reflect = { module = "com.bennyhuo.kotlin:deepcopy-reflect", version = "1.0" }
+bennyhuo-deepcopy-annotations = { module = "com.bennyhuo.kotlin:deepcopy-annotations", version = "1.1.0" }
+bennyhuo-deepcopy-kapt = { module = "com.bennyhuo.kotlin:deepcopy-compiler", version = "1.1.0" }
+
+# ========================
+# arrow
+# ========================
+# https://arrow-kt.io/
+arrow2-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow2" }
+
+arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
+arrow-fx-coroutines = { module = "io.arrow-kt:arrow-fx-coroutines", version.ref = "arrow" }
+arrow-optics-core = { module = "io.arrow-kt:arrow-optics", version.ref = "arrow" }
+arrow-optics-ksp = { module = "io.arrow-kt:arrow-optics-ksp-plugin", version.ref = "arrow" }
+
+# ========================
+# mapstruct
+# ========================
+# https://plugins.jetbrains.com/plugin/10036-mapstruct-support
+# https://github.com/mapstruct/mapstruct
+# https://mapstruct.org/news/2017-09-19-announcing-mapstruct-idea/
+mapstruct-core = { module = "org.mapstruct:mapstruct", version = "1.4.2.Final" }
+mapstruct-kapt = { module = "org.mapstruct:mapstruct-processor", version = "1.4.2.Final" }
+
+# ========================
+# test
+# ========================
+kotest-runner-junit5-jvm = { module = "io.kotest:kotest-runner-junit5-jvm", version = "5.9.1" }
+
+[plugins]
+plugin-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrains-kotlin" }
+# https://kotlinlang.org/docs/no-arg-plugin.html
+plugin-jetbrains-kotlin-noarg = { id = "org.jetbrains.kotlin.plugin.noarg", version.ref = "jetbrains-kotlin" }
+# https://kotlinlang.org/docs/all-open-plugin.html
+plugin-jetbrains-kotlin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "jetbrains-kotlin" }
+# https://kotlinlang.org/docs/serialization.html
+plugin-jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "jetbrains-kotlin" }
+# https://github.com/Kotlin/kotlinx.atomicfu
+plugin-jetbrains-kotlin-atomicfu = { id = "org.jetbrains.kotlin.plugin.atomicfu", version.ref = "jetbrains-kotlin" }
+# https://kotlinlang.org/docs/ksp-quickstart.html
+plugin-google-kotlin-ksp2 = { id = "com.google.devtools.ksp", version = "2.2.0-2.0.2" }
+plugin-google-kotlin-ksp1 = { id = "com.google.devtools.ksp", version = "1.9.24-1.0.20" }
